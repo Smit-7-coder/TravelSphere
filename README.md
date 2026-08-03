@@ -145,3 +145,18 @@ The TravelSphere interface focuses on:
 - User-friendly budget planning
 
 The complete interface was designed and prototyped using **Figma**.
+
+## 💻 Technology Stack
+
+| Technology | Purpose |
+|---|---|
+| ASP.NET Web Forms | Web Application Development |
+| C# | Backend Programming |
+| HTML5 | Page Structure |
+| CSS3 | Styling |
+| JavaScript | Client-Side Interactions |
+| Bootstrap | Responsive UI Design |
+| SQL Server | Database |
+| ADO.NET | Database Connectivity |
+| Visual Studio | Development Environment |
+| Figma | UI/UX Design |
