@@ -231,7 +231,13 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="Account\" />
+    <Folder Include="Admin\" />
     <Folder Include="App_Data\" />
+    <Folder Include="Assets\css\" />
+    <Folder Include="Assets\images\" />
+    <Folder Include="Assets\js\" />
+    <Folder Include="Traveller\" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
