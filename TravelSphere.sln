@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.14.37411.7 d17.14
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TravelSphere", "TravelSphere.csproj", "{9D93DF08-0964-4D07-8708-E9BECEEBD81D}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{9D93DF08-0964-4D07-8708-E9BECEEBD81D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9D93DF08-0964-4D07-8708-E9BECEEBD81D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9D93DF08-0964-4D07-8708-E9BECEEBD81D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9D93DF08-0964-4D07-8708-E9BECEEBD81D}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {35824AAB-639F-4877-8DD6-3CC0E3ED2758}
+	EndGlobalSection
+EndGlobal
