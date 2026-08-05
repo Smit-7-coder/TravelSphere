@@ -1,53 +1,79 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="Register.aspx.cs" Inherits="TravelSphere.Account.Register" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true"
+    CodeBehind="Register.aspx.cs"
+    Inherits="TravelSphere.Account.Register" %>
 
 <!DOCTYPE html>
 
 <html>
 <head runat="server">
+
     <title>Register - TravelSphere</title>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link href="../Assets/css/register.css" rel="stylesheet" />
 </head>
+
 
 <body>
 
-    <form id="form1" runat="server">
+<form id="form1" runat="server">
 
-        <h1>Welcome to TravelSphere</h1>
 
-        <h2>Create Account</h2>
+    <div class="register-box">
 
-        <div>
-            <label>Full Name</label>
 
-            <asp:TextBox ID="txtFullName" runat="server"></asp:TextBox>
+        <h2>Welcome to TravelSphere</h2>
+
+
+        <!-- FULL NAME -->
+
+        <div class="form-group">
+
+            <label>Full Name:</label>
+
+            <asp:TextBox
+                ID="txtFullName"
+                runat="server"
+                CssClass="form-control">
+            </asp:TextBox>
+
 
             <asp:RequiredFieldValidator
                 ID="rfvFullName"
                 runat="server"
                 ControlToValidate="txtFullName"
                 ErrorMessage="Full Name is required."
-                ForeColor="Red"
+                CssClass="validation"
                 Display="Dynamic">
             </asp:RequiredFieldValidator>
+
         </div>
 
 
-        <div>
-            <label>Email</label>
+
+        <!-- EMAIL -->
+
+        <div class="form-group">
+
+            <label>Enter Email:</label>
 
             <asp:TextBox
                 ID="txtEmail"
                 runat="server"
-                TextMode="Email">
+                TextMode="Email"
+                CssClass="form-control">
             </asp:TextBox>
+
 
             <asp:RequiredFieldValidator
                 ID="rfvEmail"
                 runat="server"
                 ControlToValidate="txtEmail"
                 ErrorMessage="Email is required."
-                ForeColor="Red"
+                CssClass="validation"
                 Display="Dynamic">
             </asp:RequiredFieldValidator>
+
 
             <asp:RegularExpressionValidator
                 ID="revEmail"
@@ -55,29 +81,37 @@
                 ControlToValidate="txtEmail"
                 ErrorMessage="Enter a valid email address."
                 ValidationExpression="^[^@\s]+@[^@\s]+\.[^@\s]+$"
-                ForeColor="Red"
+                CssClass="validation"
                 Display="Dynamic">
             </asp:RegularExpressionValidator>
+
         </div>
 
 
-        <div>
-            <label>Password</label>
+
+        <!-- PASSWORD -->
+
+        <div class="form-group">
+
+            <label>Password:</label>
 
             <asp:TextBox
                 ID="txtPassword"
                 runat="server"
-                TextMode="Password">
+                TextMode="Password"
+                CssClass="form-control">
             </asp:TextBox>
+
 
             <asp:RequiredFieldValidator
                 ID="rfvPassword"
                 runat="server"
                 ControlToValidate="txtPassword"
                 ErrorMessage="Password is required."
-                ForeColor="Red"
+                CssClass="validation"
                 Display="Dynamic">
             </asp:RequiredFieldValidator>
+
 
             <asp:RegularExpressionValidator
                 ID="revPassword"
@@ -85,29 +119,37 @@
                 ControlToValidate="txtPassword"
                 ValidationExpression="^.{6,}$"
                 ErrorMessage="Password must be at least 6 characters."
-                ForeColor="Red"
+                CssClass="validation"
                 Display="Dynamic">
             </asp:RegularExpressionValidator>
+
         </div>
 
 
-        <div>
-            <label>Confirm Password</label>
+
+        <!-- CONFIRM PASSWORD -->
+
+        <div class="form-group">
+
+            <label>Confirm Password:</label>
 
             <asp:TextBox
                 ID="txtConfirmPassword"
                 runat="server"
-                TextMode="Password">
+                TextMode="Password"
+                CssClass="form-control">
             </asp:TextBox>
+
 
             <asp:RequiredFieldValidator
                 ID="rfvConfirmPassword"
                 runat="server"
                 ControlToValidate="txtConfirmPassword"
                 ErrorMessage="Confirm Password is required."
-                ForeColor="Red"
+                CssClass="validation"
                 Display="Dynamic">
             </asp:RequiredFieldValidator>
+
 
             <asp:CompareValidator
                 ID="cvPassword"
@@ -117,29 +159,37 @@
                 Operator="Equal"
                 Type="String"
                 ErrorMessage="Passwords do not match."
-                ForeColor="Red"
+                CssClass="validation"
                 Display="Dynamic">
             </asp:CompareValidator>
+
         </div>
 
 
-        <div>
-            <label>Phone</label>
+
+        <!-- PHONE -->
+
+        <div class="form-group">
+
+            <label>Phone No:</label>
 
             <asp:TextBox
                 ID="txtPhone"
                 runat="server"
-                MaxLength="10">
+                MaxLength="10"
+                CssClass="form-control">
             </asp:TextBox>
+
 
             <asp:RequiredFieldValidator
                 ID="rfvPhone"
                 runat="server"
                 ControlToValidate="txtPhone"
                 ErrorMessage="Phone number is required."
-                ForeColor="Red"
+                CssClass="validation"
                 Display="Dynamic">
             </asp:RequiredFieldValidator>
+
 
             <asp:RegularExpressionValidator
                 ID="revPhone"
@@ -147,49 +197,79 @@
                 ControlToValidate="txtPhone"
                 ValidationExpression="^[6-9][0-9]{9}$"
                 ErrorMessage="Enter a valid 10-digit mobile number."
-                ForeColor="Red"
+                CssClass="validation"
                 Display="Dynamic">
             </asp:RegularExpressionValidator>
+
         </div>
 
 
-        <div>
-            <label>Address</label>
+
+        <!-- ADDRESS -->
+
+        <div class="form-group">
+
+            <label>Address:</label>
 
             <asp:TextBox
                 ID="txtAddress"
                 runat="server"
                 TextMode="MultiLine"
-                Rows="3">
+                Rows="2"
+                CssClass="form-control">
             </asp:TextBox>
+
 
             <asp:RequiredFieldValidator
                 ID="rfvAddress"
                 runat="server"
                 ControlToValidate="txtAddress"
                 ErrorMessage="Address is required."
-                ForeColor="Red"
+                CssClass="validation"
                 Display="Dynamic">
             </asp:RequiredFieldValidator>
+
         </div>
 
-        <br />
+
+
+        <!-- REGISTER BUTTON -->
 
         <asp:Button
             ID="btnRegister"
             runat="server"
             Text="Register"
+            CssClass="register-btn"
             OnClick="btnRegister_Click" />
 
-        <br />
-        <br />
+
+
+        <!-- DATABASE MESSAGE -->
 
         <asp:Label
             ID="lblMessage"
-            runat="server">
+            runat="server"
+            CssClass="message">
         </asp:Label>
 
-    </form>
+
+
+        <!-- LOGIN -->
+
+        <div class="login-section">
+
+            Already have an account?
+
+            <a href="Login.aspx">Login</a>
+
+        </div>
+
+
+    </div>
+
+
+</form>
 
 </body>
+
 </html>
