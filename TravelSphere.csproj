@@ -133,6 +133,7 @@
     <Content Include="About.aspx" />
     <Content Include="Account\Login.aspx" />
     <Content Include="Account\Register.aspx" />
+    <Content Include="Assets\css\home.css" />
     <Content Include="Assets\css\Login.css" />
     <Content Include="Assets\css\Register.css" />
     <Content Include="Assets\css\traveller-master.css" />

@@ -1,0 +1,199 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true"
+    CodeBehind="Traveller.Master.cs"
+    Inherits="TravelSphere.Traveller.TravellerMaster" %>
+
+<!DOCTYPE html>
+
+<html>
+<head runat="server">
+
+    <title>TravelSphere</title>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <!-- Master Page CSS -->
+    <link href="../Assets/css/traveller-master.css" rel="stylesheet" />
+
+    <!-- Page Specific CSS -->
+    <asp:ContentPlaceHolder
+        ID="head"
+        runat="server">
+    </asp:ContentPlaceHolder>
+
+</head>
+
+<body>
+
+    <form id="form1" runat="server">
+
+        <div class="main-layout">
+
+
+            <!-- ============================= -->
+            <!-- SIDEBAR -->
+            <!-- ============================= -->
+
+            <aside class="sidebar">
+
+
+                <!-- LOGO / BRAND -->
+
+                <div class="brand">
+
+                    <h2>TravelSphere</h2>
+
+                    <p>
+                        Your best companion to travel<br />
+                        around the world
+                    </p>
+
+                </div>
+
+
+
+                <!-- NAVIGATION -->
+
+                <div class="navigation">
+
+
+                    <!-- HOME -->
+
+                    <a href="<%= ResolveUrl("~/Traveller/Home.aspx") %>"
+                       class="nav-link">
+
+                        <span class="nav-icon">⌂</span>
+
+                        <span>Home</span>
+
+                    </a>
+
+
+
+                    <!-- SEARCH -->
+
+                    <a href="<%= ResolveUrl("~/Traveller/Search.aspx") %>"
+                       class="nav-link">
+
+                        <span class="nav-icon">⌕</span>
+
+                        <span>Search</span>
+
+                    </a>
+
+
+
+                    <!-- MY TRIPS -->
+
+                    <a href="<%= ResolveUrl("~/Traveller/MyTrips.aspx") %>"
+                       class="nav-link">
+
+                        <span class="nav-icon">▣</span>
+
+                        <span>My Trips</span>
+
+                    </a>
+
+
+
+                    <!-- BUDGET PLANNER -->
+
+                    <a href="<%= ResolveUrl("~/Traveller/BudgetPlanner.aspx") %>"
+                       class="nav-link">
+
+                        <span class="nav-icon">▰</span>
+
+                        <span>Budget Planner</span>
+
+                    </a>
+
+
+
+                    <!-- ABOUT US -->
+
+                    <a href="<%= ResolveUrl("~/Traveller/About.aspx") %>"
+                       class="nav-link">
+
+                        <span class="nav-icon">ⓘ</span>
+
+                        <span>About Us</span>
+
+                    </a>
+
+
+                </div>
+
+
+
+                <!-- LOGOUT -->
+
+                <div class="logout-area">
+
+                    <asp:LinkButton
+                        ID="btnLogout"
+                        runat="server"
+                        CssClass="logout-btn"
+                        CausesValidation="false"
+                        OnClick="btnLogout_Click">
+
+                        <span class="logout-icon">◯</span>
+
+                        <span>Log Out</span>
+
+                    </asp:LinkButton>
+
+                </div>
+
+
+            </aside>
+
+
+
+            <!-- ============================= -->
+            <!-- RIGHT SIDE -->
+            <!-- ============================= -->
+
+            <main class="content-area">
+
+
+                <!-- PROFILE ICON -->
+
+                <div class="profile-container">
+
+                    <a href="<%= ResolveUrl("~/Traveller/Profile.aspx") %>"
+                       class="profile-link">
+
+                        <div class="profile-circle">
+
+                            <asp:Label
+                                ID="lblProfileLetter"
+                                runat="server"
+                                Text="U">
+                            </asp:Label>
+
+                        </div>
+
+                    </a>
+
+                </div>
+
+
+
+                <!-- ============================= -->
+                <!-- CHILD PAGE CONTENT -->
+                <!-- ============================= -->
+
+                <asp:ContentPlaceHolder
+                    ID="MainContent"
+                    runat="server">
+                </asp:ContentPlaceHolder>
+
+
+            </main>
+
+
+        </div>
+
+    </form>
+
+</body>
+</html>
