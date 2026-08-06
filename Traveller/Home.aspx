@@ -23,21 +23,7 @@
     =========================================== -->
 
     <section class="hero-section">
-
-        <div class="hero-overlay"></div>
-
-        <div class="hero-content">
-
-            <h1>Find Your Next Adventure</h1>
-
-            <p>
-                Explore beautiful destinations and discover
-                unforgettable experiences.
-            </p>
-
-        </div>
-
-    </section>
+</section>
 
 
 
