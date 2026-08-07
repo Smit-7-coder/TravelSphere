@@ -246,7 +246,7 @@
                                 <div class="package-action">
 
                                     <a
-                                        href='PackageDetails.aspx?id=<%# Eval("PackageId") %>'
+                                        href='<%# ResolveUrl("~/Traveller/PackageDetails.aspx?id=" + Eval("PackageId")) %>'
                                         class="details-btn">
 
                                         View Details

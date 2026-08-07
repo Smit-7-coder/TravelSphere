@@ -136,6 +136,7 @@
     <Content Include="Assets\css\destination-details.css" />
     <Content Include="Assets\css\home.css" />
     <Content Include="Assets\css\Login.css" />
+    <Content Include="Assets\css\package-details.css" />
     <Content Include="Assets\css\Register.css" />
     <Content Include="Assets\css\traveller-master.css" />
     <Content Include="Contact.aspx" />
