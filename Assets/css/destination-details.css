@@ -1,0 +1,95 @@
+﻿.destination-container {
+    max-width: 1200px;
+    margin: 30px auto;
+    padding: 20px;
+}
+
+.hero-image {
+    width: 100%;
+    height: 420px;
+    overflow: hidden;
+    border-radius: 20px;
+    box-shadow: 0 10px 30px rgba(0,0,0,.15);
+}
+
+.destination-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.destination-details {
+    margin-top: 30px;
+}
+
+    .destination-details h1 {
+        font-size: 40px;
+        color: #15583f;
+    }
+
+.destination-state {
+    margin-top: 10px;
+    color: #777;
+    font-size: 18px;
+}
+
+.destination-type {
+    margin-top: 20px;
+    font-size: 18px;
+}
+
+.description {
+    margin-top: 20px;
+    line-height: 1.8;
+    color: #555;
+    font-size: 16px;
+}
+
+/* Packages */
+
+.package-section {
+    margin-top: 50px;
+}
+
+.package-card {
+    display: flex;
+    background: white;
+    border-radius: 15px;
+    overflow: hidden;
+    margin-bottom: 25px;
+    box-shadow: 0 5px 15px rgba(0,0,0,.08);
+}
+
+    .package-card img {
+        width: 280px;
+        height: 180px;
+        object-fit: cover;
+    }
+
+.package-info {
+    flex: 1;
+    padding: 20px;
+}
+
+    .package-info h3 {
+        color: #15583f;
+    }
+
+    .package-info p {
+        margin: 15px 0;
+        color: #666;
+    }
+
+.package-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+    .package-footer a {
+        background: #299466;
+        color: white;
+        text-decoration: none;
+        padding: 10px 20px;
+        border-radius: 25px;
+    }

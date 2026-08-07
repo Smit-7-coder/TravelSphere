@@ -114,7 +114,7 @@
 
 
                                 <a
-                                    href='DestinationDetails.aspx?id=<%# Eval("DestinationId") %>'
+                                      href='<%# ResolveUrl("~/Traveller/DestinationDetails.aspx?id=" + Eval("DestinationId")) %>'
                                     class="view-btn">
 
                                     View
@@ -180,7 +180,7 @@
                             <div class="package-image">
 
                                 <img
-                                    src='<%# ResolveUrl("~/Assets/images/packages/" + Eval("PackageImage")) %>'
+                                    src='<%# ResolveUrl("~/Assets/images/" + Eval("PackageImage")) %>'
                                     alt='<%# Eval("PackageName") %>' />
 
                             </div>

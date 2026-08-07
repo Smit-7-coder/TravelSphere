@@ -31,7 +31,7 @@ namespace TravelSphere.Traveller
             using (SqlConnection con = new SqlConnection(connectionString))
             {
                 string query = @"
-                    SELECT TOP 3
+                    SELECT TOP 6
                         DestinationId,
                         DestinationName,
                         State,

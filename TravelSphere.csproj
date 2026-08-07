@@ -133,6 +133,7 @@
     <Content Include="About.aspx" />
     <Content Include="Account\Login.aspx" />
     <Content Include="Account\Register.aspx" />
+    <Content Include="Assets\css\destination-details.css" />
     <Content Include="Assets\css\home.css" />
     <Content Include="Assets\css\Login.css" />
     <Content Include="Assets\css\Register.css" />
@@ -214,7 +215,9 @@
     <Content Include="Scripts\WebForms\WebParts.js" />
     <Content Include="Scripts\WebForms\WebUIValidation.js" />
     <Content Include="Site.Master" />
+    <Content Include="Traveller\DestinationDetails.aspx" />
     <Content Include="Traveller\Home.aspx" />
+    <Content Include="Traveller\PackageDetails.aspx" />
     <Content Include="ViewSwitcher.ascx" />
     <Content Include="Web.config" />
     <Content Include="Bundle.config" />
@@ -276,12 +279,26 @@
     <Compile Include="Site.Mobile.Master.designer.cs">
       <DependentUpon>Site.Mobile.Master</DependentUpon>
     </Compile>
+    <Compile Include="Traveller\DestinationDetails.aspx.cs">
+      <DependentUpon>DestinationDetails.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Traveller\DestinationDetails.aspx.designer.cs">
+      <DependentUpon>DestinationDetails.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Traveller\Home.aspx.cs">
       <DependentUpon>Home.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="Traveller\Home.aspx.designer.cs">
       <DependentUpon>Home.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Traveller\PackageDetails.aspx.cs">
+      <DependentUpon>PackageDetails.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Traveller\PackageDetails.aspx.designer.cs">
+      <DependentUpon>PackageDetails.aspx</DependentUpon>
     </Compile>
     <Compile Include="Traveller\Traveller.Master.cs">
       <DependentUpon>Traveller.Master</DependentUpon>

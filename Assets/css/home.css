@@ -6,10 +6,11 @@
     width: 100%;
     aspect-ratio: 2 / 1;
     background-image: url('../images/Gujrat_Banner.png');
-    background-size: 100% 100%;
+    background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
 }
+
 /* ==========================================
    HOME CONTAINER
 ========================================== */
@@ -18,16 +19,13 @@
     padding: 32px 42px 50px;
 }
 
-
-
 /* ==========================================
-   SECTION
+   SECTION HEADER
 ========================================== */
 
 .home-section {
     margin-bottom: 35px;
 }
-
 
 .section-header {
     display: flex;
@@ -36,7 +34,6 @@
     margin-bottom: 20px;
 }
 
-
     .section-header h2 {
         font-size: 22px;
         font-weight: 600;
@@ -44,12 +41,10 @@
         margin-bottom: 4px;
     }
 
-
     .section-header p {
         font-size: 13px;
         color: #777;
     }
-
 
 .view-all {
     text-decoration: none;
@@ -61,18 +56,14 @@
     gap: 7px;
 }
 
-
     .view-all span {
         font-size: 20px;
-        transition: 0.2s;
+        transition: transform 0.2s ease;
     }
-
 
     .view-all:hover span {
         transform: translateX(4px);
     }
-
-
 
 /* ==========================================
    DESTINATION GRID
@@ -84,44 +75,39 @@
     gap: 22px;
 }
 
-
-
 /* ==========================================
    DESTINATION CARD
 ========================================== */
 
 .destination-card {
-    background-color: white;
+    background-color: #ffffff;
     border-radius: 14px;
     overflow: hidden;
     box-shadow: 0 3px 12px rgba(0, 0, 0, 0.07);
-    transition: 0.25s;
+    transition: transform 0.25s ease, box-shadow 0.25s ease;
+    display: flex;
+    flex-direction: column;
 }
-
 
     .destination-card:hover {
         transform: translateY(-5px);
         box-shadow: 0 8px 22px rgba(0, 0, 0, 0.12);
     }
 
-
-
-/* IMAGE */
+/* DESTINATION IMAGE FIX */
 
 .destination-image {
     width: 100%;
-    height: 220px;
+    height: 200px;
     background-color: #f3f3f3;
-    display: flex;
-    align-items: center;
-    justify-content: center;
     overflow: hidden;
+    flex-shrink: 0;
 }
 
     .destination-image img {
         width: 100%;
         height: 100%;
-        object-fit: contain;
+        object-fit: cover; /* Keeps aspect ratio without distortion */
         object-position: center;
         display: block;
         transition: transform 0.4s ease;
@@ -131,72 +117,61 @@
     transform: scale(1.03);
 }
 
-
-/* DESTINATION CONTENT */
+/* DESTINATION CONTENT FIX */
 
 .destination-content {
-    padding: 15px 16px 17px;
+    padding: 18px 18px 20px;
+    display: flex;
+    flex-direction: column;
+    flex: 1; /* Pushes button to bottom uniformly across cards */
 }
-
 
     .destination-content h3 {
         font-size: 18px;
-        color: #222;
-        margin-bottom: 7px;
+        font-weight: 600;
+        color: #222222;
+        margin-bottom: 6px;
     }
-
 
 .destination-location {
     font-size: 13px;
-    color: #555;
+    color: #555555;
     margin-bottom: 10px;
+    display: flex;
+    align-items: center;
 }
-
 
 .location-icon {
     color: #299466;
     font-size: 8px;
-    margin-right: 5px;
+    margin-right: 6px;
 }
-
 
 .destination-content p {
     font-size: 12px;
-    color: #666;
+    color: #666666;
     line-height: 1.4;
-    min-height: 35px;
-    margin-bottom: 14px;
+    margin-bottom: 18px;
+    flex-grow: 1; /* Maintains text spacing equality */
 }
 
-
-
-/* VIEW BUTTON */
+/* DESTINATION BUTTON FIX */
 
 .view-btn {
-    display: inline-block;
-    float: right;
-    padding: 7px 21px;
+    align-self: flex-end; /* Replaced broken float:right with flexbox */
+    padding: 8px 24px;
     background-color: #299466;
-    color: white;
+    color: #ffffff;
     text-decoration: none;
-    border-radius: 18px;
+    border-radius: 20px;
     font-size: 12px;
-    transition: 0.2s;
+    font-weight: 500;
+    transition: background-color 0.2s ease, transform 0.2s ease;
 }
-
 
     .view-btn:hover {
         background-color: #15583f;
     }
-
-
-.destination-content::after {
-    content: "";
-    display: block;
-    clear: both;
-}
-
-
 
 /* ==========================================
    PACKAGE SECTION
@@ -206,199 +181,182 @@
     margin-top: 15px;
 }
 
-
 .package-list {
     display: flex;
     flex-direction: column;
     gap: 18px;
 }
 
-
-
 /* ==========================================
-   PACKAGE CARD
+   PACKAGE CARD FIX
 ========================================== */
 
 .package-card {
     width: 100%;
-    min-height: 170px;
+    min-height: 180px;
     background-color: #299466;
     border-radius: 16px;
     overflow: hidden;
     display: flex;
+    align-items: stretch; /* Forces equal height between image and content */
     box-shadow: 0 4px 14px rgba(0, 0, 0, 0.08);
-    transition: 0.25s;
+    transition: transform 0.25s ease, box-shadow 0.25s ease;
 }
-
 
     .package-card:hover {
         transform: translateY(-3px);
         box-shadow: 0 8px 22px rgba(0, 0, 0, 0.14);
     }
 
-
-
-/* PACKAGE IMAGE */
+/* PACKAGE IMAGE FIX */
 
 .package-image {
     width: 260px;
+    height: 180px;
     flex-shrink: 0;
+    background: #ffffff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
 }
 
-
     .package-image img {
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
+        max-width: 100%;
+        max-height: 100%;
+        width: auto;
+        height: auto;
+        display: block;
+        transition: .4s;
     }
 
-
-
-/* PACKAGE CONTENT */
+.package-card:hover .package-image img {
+    transform: scale(1.05);
+}   
 
 .package-content {
     flex: 1;
-    padding: 20px 22px;
+    padding: 22px 28px;
     display: flex;
     align-items: center;
     justify-content: space-between;
     gap: 25px;
-    color: white;
+    color: #ffffff;
 }
-
 
 .package-main-info {
     flex: 1;
 }
 
-
     .package-main-info h3 {
         font-size: 20px;
-        margin-bottom: 5px;
+        font-weight: 600;
+        margin-bottom: 4px;
     }
-
 
 .package-location {
     font-size: 12px;
-    margin-bottom: 8px;
+    margin-bottom: 10px;
     color: #d8eee5;
 }
-
 
 .package-main-info p {
     font-size: 13px;
     line-height: 1.5;
     max-width: 700px;
-    margin-bottom: 15px;
+    margin-bottom: 16px;
     color: #f1f8f5;
 }
 
-
-
-/* PACKAGE DETAILS */
+/* PACKAGE DETAILS BADGE */
 
 .package-details {
     display: flex;
-    background-color: #f2f2f2;
-    color: #333;
+    background-color: #ffffff;
+    color: #333333;
     width: fit-content;
-    border-radius: 7px;
+    border-radius: 8px;
     overflow: hidden;
+    font-weight: 500;
 }
 
-
     .package-details span {
-        padding: 8px 18px;
+        padding: 6px 18px;
         font-size: 13px;
     }
 
-
         .package-details span + span {
-            border-left: 1px solid #ccc;
+            border-left: 1px solid #e0e0e0;
         }
 
-
-
-/* VIEW DETAILS */
+/* PACKAGE BUTTON */
 
 .package-action {
     flex-shrink: 0;
 }
 
-
 .details-btn {
     display: inline-block;
-    min-width: 125px;
+    min-width: 120px;
     text-align: center;
-    padding: 10px 20px;
-    border-radius: 22px;
-    background-color: #f2f2f2;
-    color: #333;
+    padding: 10px 22px;
+    border-radius: 20px;
+    background-color: #ffffff;
+    color: #333333;
     text-decoration: none;
     font-size: 13px;
-    transition: 0.2s;
+    font-weight: 500;
+    transition: background-color 0.2s ease, transform 0.2s ease;
 }
 
-
     .details-btn:hover {
-        background-color: white;
+        background-color: #f8f8f8;
         transform: translateY(-2px);
     }
 
-
-
 /* ==========================================
-   RESPONSIVE
+   RESPONSIVE LAYOUT
 ========================================== */
 
 @media (max-width: 1050px) {
-
     .destination-grid {
         grid-template-columns: repeat(2, 1fr);
     }
 
-
     .package-image {
-        width: 220px;
+        width: 200px;
     }
 }
 
-
 @media (max-width: 750px) {
-
-    .hero-content {
-        margin-left: 30px;
-    }
-
-
-        .hero-content h1 {
-            font-size: 27px;
-        }
-
-
     .home-container {
         padding: 25px 20px;
     }
-
 
     .destination-grid {
         grid-template-columns: 1fr;
     }
 
-
     .package-card {
         flex-direction: column;
     }
 
-
     .package-image {
         width: 100%;
-        height: 190px;
+        height: 200px;
     }
-
 
     .package-content {
         align-items: flex-start;
         flex-direction: column;
+        gap: 18px;
+    }
+
+    .package-action {
+        width: 100%;
+    }
+
+    .details-btn {
+        width: 100%;
     }
 }
