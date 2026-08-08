@@ -1,0 +1,425 @@
+﻿/* ==========================================
+   SEARCH CONTAINER
+========================================== */
+
+.search-container {
+    padding: 35px 42px 50px;
+}
+
+
+/* ==========================================
+   SEARCH HEADER
+========================================== */
+
+.search-header {
+    margin-bottom: 25px;
+}
+
+    .search-header h1 {
+        font-size: 30px;
+        color: #15583f;
+        margin-bottom: 6px;
+    }
+
+    .search-header p {
+        font-size: 14px;
+        color: #777;
+    }
+
+
+/* ==========================================
+   SEARCH BOX
+========================================== */
+
+.search-box {
+    width: 100%;
+    max-width: 850px;
+    margin: 0 auto 35px;
+    display: flex;
+    background: #ffffff;
+    padding: 7px;
+    border-radius: 35px;
+    box-shadow: 0 4px 18px rgba(0, 0, 0, 0.10);
+}
+
+
+.search-input {
+    flex: 1;
+    border: none;
+    outline: none;
+    padding: 13px 20px;
+    font-size: 14px;
+    border-radius: 30px;
+    color: #333;
+}
+
+
+    .search-input::placeholder {
+        color: #999;
+    }
+
+
+.search-button {
+    border: none;
+    background: #299466;
+    color: white;
+    padding: 0 30px;
+    border-radius: 30px;
+    font-size: 14px;
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+
+    .search-button:hover {
+        background: #15583f;
+    }
+
+
+/* ==========================================
+   MESSAGE
+========================================== */
+
+.search-message {
+    display: block;
+    text-align: center;
+    margin-bottom: 25px;
+    color: #666;
+    font-size: 14px;
+}
+
+
+/* ==========================================
+   RESULT SECTION
+========================================== */
+
+.result-section {
+    margin-bottom: 40px;
+}
+
+
+.result-title {
+    margin-bottom: 18px;
+}
+
+
+    .result-title h2 {
+        font-size: 22px;
+        color: #252525;
+        font-weight: 600;
+    }
+
+
+/* ==========================================
+   DESTINATION GRID
+========================================== */
+
+.destination-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 22px;
+}
+
+
+/* ==========================================
+   DESTINATION CARD
+========================================== */
+
+.destination-card {
+    background: #ffffff;
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: 0 4px 14px rgba(0, 0, 0, 0.08);
+    transition: 0.25s;
+    display: flex;
+    flex-direction: column;
+}
+
+
+    .destination-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 8px 24px rgba(0, 0, 0, 0.13);
+    }
+
+
+/* IMAGE */
+
+.destination-image {
+    width: 100%;
+    height: 180px;
+    overflow: hidden;
+    background: #f3f3f3;
+}
+
+
+    .destination-image img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        object-position: center;
+        display: block;
+        transition: 0.4s;
+    }
+
+
+.destination-card:hover .destination-image img {
+    transform: scale(1.05);
+}
+
+
+/* CONTENT */
+
+.destination-content {
+    padding: 17px;
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+}
+
+
+    .destination-content h3 {
+        font-size: 18px;
+        color: #222;
+        margin-bottom: 7px;
+    }
+
+
+.destination-state {
+    font-size: 13px;
+    color: #666;
+    margin-bottom: 10px;
+}
+
+
+    .destination-state span {
+        color: #299466;
+        font-size: 8px;
+        margin-right: 5px;
+    }
+
+
+.destination-content p {
+    font-size: 12px;
+    color: #666;
+    line-height: 1.5;
+    flex: 1;
+    margin-bottom: 15px;
+}
+
+
+/* BUTTON */
+
+.view-button {
+    align-self: flex-end;
+    background: #299466;
+    color: white;
+    text-decoration: none;
+    padding: 8px 22px;
+    border-radius: 20px;
+    font-size: 12px;
+}
+
+
+    .view-button:hover {
+        background: #15583f;
+    }
+
+
+/* ==========================================
+   PACKAGE GRID
+========================================== */
+
+.package-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+}
+
+
+/* ==========================================
+   PACKAGE CARD
+========================================== */
+
+.package-card {
+    display: flex;
+    width: 100%;
+    min-height: 190px;
+    background: #299466;
+    border-radius: 16px;
+    overflow: hidden;
+    box-shadow: 0 4px 14px rgba(0, 0, 0, 0.08);
+    transition: 0.25s;
+}
+
+
+    .package-card:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 8px 22px rgba(0, 0, 0, 0.13);
+    }
+
+
+/* PACKAGE IMAGE */
+
+.package-image {
+    width: 250px;
+    flex-shrink: 0;
+    overflow: hidden;
+    background: #ffffff;
+}
+
+
+    .package-image img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        object-position: center;
+        display: block;
+        transition: 0.4s;
+    }
+
+
+.package-card:hover .package-image img {
+    transform: scale(1.05);
+}
+
+
+/* PACKAGE CONTENT */
+
+.package-content {
+    flex: 1;
+    padding: 22px 25px;
+    color: white;
+    display: flex;
+    flex-direction: column;
+}
+
+
+    .package-content h3 {
+        font-size: 20px;
+        margin-bottom: 5px;
+    }
+
+
+.package-location {
+    font-size: 12px;
+    color: #d8eee5;
+    margin-bottom: 10px;
+}
+
+
+.package-content p {
+    font-size: 13px;
+    line-height: 1.5;
+    max-width: 800px;
+    color: #f1f8f5;
+    margin-bottom: 18px;
+}
+
+
+/* PACKAGE BOTTOM */
+
+.package-bottom {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    margin-top: auto;
+}
+
+
+.package-price {
+    background: white;
+    color: #333;
+    padding: 8px 15px;
+    border-radius: 7px;
+}
+
+
+    .package-price strong {
+        font-size: 14px;
+    }
+
+
+    .package-price span {
+        font-size: 11px;
+        color: #777;
+    }
+
+
+.package-duration {
+    background: white;
+    color: #333;
+    padding: 8px 15px;
+    border-radius: 7px;
+    font-size: 13px;
+}
+
+
+.details-button {
+    margin-left: auto;
+    background: white;
+    color: #333;
+    text-decoration: none;
+    padding: 10px 22px;
+    border-radius: 22px;
+    font-size: 13px;
+}
+
+
+    .details-button:hover {
+        background: #f3f3f3;
+    }
+
+
+/* ==========================================
+   RESPONSIVE
+========================================== */
+
+@media (max-width: 1050px) {
+
+    .destination-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .package-image {
+        width: 210px;
+    }
+}
+
+
+@media (max-width: 750px) {
+
+    .search-container {
+        padding: 25px 20px;
+    }
+
+
+    .search-box {
+        width: 100%;
+    }
+
+
+    .destination-grid {
+        grid-template-columns: 1fr;
+    }
+
+
+    .package-card {
+        flex-direction: column;
+    }
+
+
+    .package-image {
+        width: 100%;
+        height: 200px;
+    }
+
+
+    .package-bottom {
+        flex-wrap: wrap;
+    }
+
+
+    .details-button {
+        margin-left: 0;
+    }
+}
