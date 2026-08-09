@@ -1,0 +1,508 @@
+﻿/* ==========================================
+   BOOKING CONTAINER
+========================================== */
+
+.booking-container {
+    max-width: 1100px;
+    margin: 30px auto;
+    padding: 20px 30px 50px;
+}
+
+
+    .booking-container h1 {
+        color: #15583f;
+        margin-bottom: 5px;
+    }
+
+
+.booking-subtitle {
+    color: #777;
+    margin-bottom: 25px;
+}
+
+
+/* ==========================================
+   PACKAGE SUMMARY
+========================================== */
+
+.package-summary {
+    display: flex;
+    background: #299466;
+    color: white;
+    border-radius: 16px;
+    overflow: hidden;
+    margin-bottom: 25px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, .10);
+}
+
+
+.package-summary-image {
+    width: 250px;
+    height: 180px;
+    object-fit: cover;
+}
+
+
+.package-summary-info {
+    padding: 22px 25px;
+}
+
+
+    .package-summary-info h2 {
+        margin-bottom: 7px;
+    }
+
+
+    .package-summary-info p {
+        color: #d8eee5;
+    }
+
+
+.package-summary-details {
+    display: flex;
+    gap: 20px;
+    margin-top: 20px;
+    flex-wrap: wrap;
+}
+
+
+    .package-summary-details span {
+        background: white;
+        color: #333;
+        padding: 8px 14px;
+        border-radius: 7px;
+        font-size: 13px;
+    }
+
+
+/* ==========================================
+   GRID
+========================================== */
+
+.booking-grid {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    gap: 25px;
+}
+
+
+/* ==========================================
+   CARD
+========================================== */
+
+.card {
+    background: white;
+    border-radius: 16px;
+    padding: 25px;
+    box-shadow: 0 5px 18px rgba(0, 0, 0, .08);
+}
+
+
+    .card h2 {
+        color: #15583f;
+        margin-bottom: 22px;
+    }
+
+
+/* ==========================================
+   FORM
+========================================== */
+
+.form-group {
+    margin-bottom: 18px;
+}
+
+
+    .form-group label {
+        display: block;
+        font-size: 14px;
+        font-weight: 600;
+        color: #333;
+        margin-bottom: 7px;
+    }
+
+
+.form-control {
+    width: 100%;
+    box-sizing: border-box;
+    padding: 11px 13px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    outline: none;
+    font-size: 14px;
+    transition: border-color .2s;
+}
+
+
+    .form-control:focus {
+        border-color: #299466;
+    }
+
+
+/* ==========================================
+   TRAVELLER DETAILS
+========================================== */
+
+.traveller-details-section {
+    margin-top: 25px;
+    margin-bottom: 25px;
+}
+
+
+    .traveller-details-section h2 {
+        color: #15583f;
+        margin-bottom: 6px;
+    }
+
+
+.traveller-info {
+    color: #777;
+    font-size: 13px;
+    margin-bottom: 20px;
+}
+
+
+/* ==========================================
+   TRAVELLER CARD
+========================================== */
+
+.traveller-card {
+    background: #f8faf9;
+    border: 1px solid #e1e8e4;
+    border-radius: 12px;
+    padding: 18px;
+    margin-bottom: 15px;
+    transition: border-color .2s ease, box-shadow .2s ease;
+}
+
+
+    .traveller-card:hover {
+        border-color: #299466;
+        box-shadow: 0 3px 10px rgba(0, 0, 0, .05);
+    }
+
+
+    .traveller-card h3 {
+        color: #15583f;
+        font-size: 15px;
+        margin-bottom: 15px;
+    }
+
+
+/* ==========================================
+   TRAVELLER FORM GRID
+========================================== */
+
+.traveller-form-grid {
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr;
+    gap: 15px;
+}
+
+
+/* ==========================================
+   TRAVELLER FIELD
+========================================== */
+
+.traveller-field {
+    display: flex;
+    flex-direction: column;
+}
+
+
+    .traveller-field label {
+        font-size: 12px;
+        font-weight: 600;
+        color: #444;
+        margin-bottom: 6px;
+    }
+
+
+/* ==========================================
+   TRAVELLER INPUT
+========================================== */
+
+.traveller-input {
+    width: 100%;
+    box-sizing: border-box;
+    padding: 10px 12px;
+    border: 1px solid #ddd;
+    border-radius: 7px;
+    outline: none;
+    font-size: 13px;
+    background: #ffffff;
+    color: #333;
+    transition: border-color .2s, box-shadow .2s;
+}
+
+
+    .traveller-input:focus {
+        border-color: #299466;
+        box-shadow: 0 0 0 2px rgba(41, 148, 102, .10);
+    }
+
+
+    .traveller-input::placeholder {
+        color: #aaa;
+    }
+
+
+/* ==========================================
+   CONFIRM BUTTON
+========================================== */
+
+.confirm-button {
+    width: 100%;
+    border: none;
+    padding: 13px;
+    background: #299466;
+    color: white;
+    border-radius: 25px;
+    font-size: 15px;
+    cursor: pointer;
+    margin-top: 10px;
+    transition: background-color .2s ease, transform .2s ease;
+}
+
+
+    .confirm-button:hover {
+        background: #15583f;
+        transform: translateY(-1px);
+    }
+
+
+/* ==========================================
+   BOOKING MESSAGE
+========================================== */
+
+.booking-message {
+    display: block;
+    margin-top: 15px;
+    text-align: center;
+}
+
+
+/* ==========================================
+   PRICE SUMMARY
+========================================== */
+
+.price-card {
+    height: fit-content;
+    position: sticky;
+    top: 20px;
+}
+
+
+.price-row {
+    display: flex;
+    justify-content: space-between;
+    padding: 12px 0;
+    color: #555;
+}
+
+
+    .price-row strong {
+        color: #333;
+    }
+
+
+.price-card hr {
+    border: none;
+    border-top: 1px solid #eee;
+    margin: 10px 0;
+}
+
+
+.total-row {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 15px;
+    font-size: 18px;
+    color: #15583f;
+}
+
+
+    .total-row strong {
+        color: #299466;
+    }
+
+
+/* ==========================================
+   PRICE SUMMARY VALUES
+========================================== */
+
+#adultCount {
+    font-weight: 600;
+}
+
+
+#childCount {
+    font-weight: 600;
+}
+
+
+#totalAmount {
+    font-weight: 700;
+}
+
+
+/* ==========================================
+   VALIDATION MESSAGE
+========================================== */
+
+.booking-form span[style*="color:Red"] {
+    display: block;
+    margin-top: 5px;
+    font-size: 12px;
+}
+
+
+/* ==========================================
+   RESPONSIVE - TABLET
+========================================== */
+
+@media (max-width: 1000px) {
+
+    .booking-container {
+        padding: 20px 25px 40px;
+    }
+
+
+    .booking-grid {
+        grid-template-columns: 1.7fr 1fr;
+        gap: 20px;
+    }
+
+
+    .package-summary-image {
+        width: 220px;
+        height: 170px;
+    }
+
+
+    .traveller-form-grid {
+        grid-template-columns: 1.5fr 1fr 1fr;
+    }
+}
+
+
+/* ==========================================
+   RESPONSIVE - MOBILE
+========================================== */
+
+@media (max-width: 800px) {
+
+    .booking-container {
+        padding: 20px;
+    }
+
+
+    .booking-grid {
+        grid-template-columns: 1fr;
+    }
+
+
+    .price-card {
+        position: static;
+    }
+
+
+    .package-summary {
+        flex-direction: column;
+    }
+
+
+    .package-summary-image {
+        width: 100%;
+        height: 220px;
+    }
+
+
+    .package-summary-info {
+        padding: 20px;
+    }
+
+
+    .package-summary-details {
+        gap: 10px;
+    }
+
+
+    .traveller-form-grid {
+        grid-template-columns: 1fr;
+    }
+
+
+    .traveller-card {
+        padding: 15px;
+    }
+}
+
+
+/* ==========================================
+   RESPONSIVE - SMALL MOBILE
+========================================== */
+
+@media (max-width: 500px) {
+
+    .booking-container {
+        margin: 15px auto;
+        padding: 15px;
+    }
+
+
+        .booking-container h1 {
+            font-size: 24px;
+        }
+
+
+    .booking-subtitle {
+        font-size: 13px;
+    }
+
+
+    .card {
+        padding: 18px;
+    }
+
+
+    .package-summary-info h2 {
+        font-size: 20px;
+    }
+
+
+    .package-summary-details {
+        flex-direction: column;
+        gap: 8px;
+    }
+
+
+        .package-summary-details span {
+            width: fit-content;
+        }
+
+
+    .traveller-details-section h2 {
+        font-size: 19px;
+    }
+
+
+    .traveller-info {
+        font-size: 12px;
+    }
+
+
+    .traveller-card h3 {
+        font-size: 14px;
+    }
+
+
+    .confirm-button {
+        font-size: 14px;
+    }
+
+
+    .total-row {
+        font-size: 16px;
+    }
+}

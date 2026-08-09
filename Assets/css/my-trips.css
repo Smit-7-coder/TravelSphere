@@ -1,0 +1,338 @@
+﻿/* ==========================================
+   MAIN CONTAINER
+========================================== */
+
+.trips-container {
+    padding: 35px 42px 50px;
+}
+
+
+/* ==========================================
+   HEADER
+========================================== */
+
+.trips-header {
+    margin-bottom: 30px;
+}
+
+    .trips-header h1 {
+        font-size: 30px;
+        color: #15583f;
+        margin-bottom: 6px;
+    }
+
+    .trips-header p {
+        font-size: 14px;
+        color: #777;
+    }
+
+
+/* ==========================================
+   SECTION
+========================================== */
+
+.trips-section {
+    margin-bottom: 40px;
+}
+
+.section-title {
+    margin-bottom: 18px;
+}
+
+    .section-title h2 {
+        font-size: 22px;
+        font-weight: 600;
+        color: #252525;
+    }
+
+
+/* ==========================================
+   TRIP LIST
+========================================== */
+
+.trip-list {
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+}
+
+
+/* ==========================================
+   TRIP CARD
+========================================== */
+
+.trip-card {
+    width: 100%;
+    min-height: 190px;
+    display: flex;
+    background: #ffffff;
+    border-radius: 16px;
+    overflow: hidden;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+    transition: 0.25s;
+}
+
+    .trip-card:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 8px 22px rgba(0, 0, 0, 0.12);
+    }
+
+
+/* ==========================================
+   IMAGE
+========================================== */
+
+.trip-image {
+    width: 250px;
+    flex-shrink: 0;
+    overflow: hidden;
+    background: #eeeeee;
+}
+
+    .trip-image img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        object-position: center;
+        display: block;
+        transition: 0.4s;
+    }
+
+.trip-card:hover .trip-image img {
+    transform: scale(1.04);
+}
+
+
+/* ==========================================
+   CONTENT
+========================================== */
+
+.trip-content {
+    flex: 1;
+    padding: 22px 25px;
+    display: flex;
+    justify-content: space-between;
+    gap: 25px;
+}
+
+.trip-main {
+    flex: 1;
+}
+
+    .trip-main h3 {
+        font-size: 20px;
+        color: #222;
+        margin-bottom: 7px;
+    }
+
+
+/* ==========================================
+   LOCATION
+========================================== */
+
+.trip-location {
+    color: #299466;
+    font-size: 13px;
+    margin-bottom: 20px;
+}
+
+
+/* ==========================================
+   INFO GRID
+========================================== */
+
+.trip-info-grid {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(100px, 1fr));
+    gap: 15px;
+}
+
+    .trip-info-grid div {
+        display: flex;
+        flex-direction: column;
+        gap: 5px;
+    }
+
+    .trip-info-grid span {
+        color: #888;
+        font-size: 11px;
+    }
+
+    .trip-info-grid strong {
+        color: #333;
+        font-size: 13px;
+    }
+
+
+/* ==========================================
+   RIGHT SIDE
+========================================== */
+
+.trip-side {
+    min-width: 130px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    justify-content: space-between;
+    gap: 15px;
+}
+
+
+/* ==========================================
+   BOOKING STATUS
+========================================== */
+
+.booking-status {
+    background: #e8f6ef;
+    color: #299466;
+    padding: 6px 13px;
+    border-radius: 20px;
+    font-size: 11px;
+    font-weight: 600;
+}
+
+
+/* ==========================================
+   COMPLETED STATUS
+========================================== */
+
+.completed-status {
+    background: #eeeeee;
+    color: #666;
+    padding: 6px 13px;
+    border-radius: 20px;
+    font-size: 11px;
+    font-weight: 600;
+}
+
+
+/* ==========================================
+   VIEW BUTTON
+========================================== */
+
+.view-trip-button {
+    display: inline-block;
+    background: #299466;
+    color: #ffffff;
+    text-decoration: none;
+    padding: 9px 20px;
+    border-radius: 20px;
+    font-size: 12px;
+    transition: 0.2s;
+}
+
+    .view-trip-button:hover {
+        background: #15583f;
+    }
+
+
+/* ==========================================
+   EMPTY MESSAGE
+========================================== */
+
+.empty-message {
+    background: #ffffff;
+    border-radius: 15px;
+    padding: 40px 20px;
+    text-align: center;
+    box-shadow: 0 3px 12px rgba(0, 0, 0, 0.06);
+    color: #777;
+}
+
+    .empty-message h3 {
+        color: #333;
+        margin: 10px 0;
+    }
+
+    .empty-message p {
+        font-size: 13px;
+        margin-bottom: 18px;
+    }
+
+.empty-icon {
+    font-size: 35px;
+    color: #299466;
+}
+
+
+/* ==========================================
+   EXPLORE BUTTON
+========================================== */
+
+.explore-button {
+    display: inline-block;
+    padding: 9px 20px;
+    background: #299466;
+    color: #ffffff;
+    text-decoration: none;
+    border-radius: 20px;
+    font-size: 12px;
+}
+
+    .explore-button:hover {
+        background: #15583f;
+    }
+
+
+/* ==========================================
+   PREVIOUS SECTION
+========================================== */
+
+.previous-section {
+    margin-top: 10px;
+}
+
+.previous-trip {
+    opacity: 0.85;
+}
+
+
+/* ==========================================
+   RESPONSIVE
+========================================== */
+
+@media (max-width: 1050px) {
+
+    .trip-info-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+
+@media (max-width: 750px) {
+
+    .trips-container {
+        padding: 25px 20px;
+    }
+
+    .trip-card {
+        flex-direction: column;
+    }
+
+    .trip-image {
+        width: 100%;
+        height: 210px;
+    }
+
+    .trip-content {
+        flex-direction: column;
+    }
+
+    .trip-side {
+        width: 100%;
+        flex-direction: row;
+        align-items: center;
+    }
+
+    .trip-info-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+
+@media (max-width: 450px) {
+
+    .trip-info-grid {
+        grid-template-columns: 1fr;
+    }
+}

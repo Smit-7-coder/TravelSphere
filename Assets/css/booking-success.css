@@ -1,0 +1,269 @@
+﻿/* ==========================================
+   SUCCESS CONTAINER
+========================================== */
+
+.success-container {
+    max-width: 900px;
+    margin: 40px auto;
+    padding: 20px 30px 50px;
+}
+
+
+/* ==========================================
+   SUCCESS CARD
+========================================== */
+
+.success-card {
+    background: #ffffff;
+    border-radius: 18px;
+    padding: 40px 30px;
+    text-align: center;
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.08);
+}
+
+
+/* ==========================================
+   SUCCESS ICON
+========================================== */
+
+.success-icon {
+    width: 70px;
+    height: 70px;
+    margin: 0 auto 18px;
+    border-radius: 50%;
+    background: #299466;
+    color: #ffffff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 38px;
+    font-weight: bold;
+}
+
+
+.success-card h1 {
+    color: #15583f;
+    font-size: 30px;
+    margin-bottom: 8px;
+}
+
+
+.success-message {
+    color: #777;
+    font-size: 14px;
+    margin-bottom: 25px;
+}
+
+
+/* ==========================================
+   BOOKING ID
+========================================== */
+
+.booking-id-box {
+    display: inline-flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 5px;
+    background: #f2f8f5;
+    border-radius: 10px;
+    padding: 12px 30px;
+}
+
+
+    .booking-id-box span {
+        color: #777;
+        font-size: 12px;
+    }
+
+
+    .booking-id-box strong {
+        color: #299466;
+        font-size: 20px;
+    }
+
+
+/* ==========================================
+   DETAILS CARD
+========================================== */
+
+.details-card {
+    background: #ffffff;
+    border-radius: 18px;
+    padding: 28px;
+    margin-top: 25px;
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.08);
+}
+
+
+    .details-card h2 {
+        color: #15583f;
+        margin-bottom: 25px;
+    }
+
+
+/* ==========================================
+   DETAILS GRID
+========================================== */
+
+.details-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+    padding-bottom: 25px;
+    border-bottom: 1px solid #eeeeee;
+}
+
+
+.detail-item {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+
+.detail-label {
+    color: #888;
+    font-size: 12px;
+}
+
+
+.detail-item strong {
+    color: #333;
+    font-size: 14px;
+}
+
+
+/* ==========================================
+   STATUS
+========================================== */
+
+.status {
+    color: #299466 !important;
+}
+
+
+/* ==========================================
+   PAYMENT SECTION
+========================================== */
+
+.payment-section {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-top: 22px;
+}
+
+
+    .payment-section > div {
+        display: flex;
+        flex-direction: column;
+        gap: 6px;
+    }
+
+
+    .payment-section strong {
+        color: #299466;
+        font-size: 15px;
+    }
+
+
+.total-section {
+    text-align: right;
+}
+
+
+    .total-section span {
+        color: #555;
+        font-size: 14px;
+    }
+
+
+    .total-section strong {
+        font-size: 22px;
+    }
+
+
+/* ==========================================
+   ACTION BUTTONS
+========================================== */
+
+.action-section {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    margin-top: 25px;
+}
+
+
+.home-button,
+.trips-button {
+    text-decoration: none;
+    padding: 11px 25px;
+    border-radius: 25px;
+    font-size: 13px;
+    transition: 0.2s;
+}
+
+
+.home-button {
+    background: #299466;
+    color: #ffffff;
+}
+
+
+    .home-button:hover {
+        background: #15583f;
+    }
+
+
+.trips-button {
+    background: #ffffff;
+    color: #299466;
+    border: 1px solid #299466;
+}
+
+
+    .trips-button:hover {
+        background: #299466;
+        color: #ffffff;
+    }
+
+
+/* ==========================================
+   RESPONSIVE
+========================================== */
+
+@media(max-width: 700px) {
+
+    .success-container {
+        padding: 20px;
+    }
+
+
+    .details-grid {
+        grid-template-columns: 1fr;
+    }
+
+
+    .payment-section {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 20px;
+    }
+
+
+    .total-section {
+        text-align: left;
+    }
+
+
+    .action-section {
+        flex-direction: column;
+    }
+
+
+    .home-button,
+    .trips-button {
+        text-align: center;
+    }
+}
