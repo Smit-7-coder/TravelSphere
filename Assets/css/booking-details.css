@@ -1,0 +1,652 @@
+﻿/* ==========================================
+   MAIN CONTAINER
+========================================== */
+
+.booking-details-container {
+    max-width: 1100px;
+    margin: 30px auto;
+    padding: 20px 30px 50px;
+}
+
+
+/* ==========================================
+   PAGE HEADER
+========================================== */
+
+.details-header {
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    margin-bottom: 25px;
+}
+
+
+    .details-header h1 {
+        color: #15583f;
+        font-size: 30px;
+        margin-bottom: 5px;
+    }
+
+
+    .details-header p {
+        color: #777;
+        font-size: 14px;
+    }
+
+
+/* ==========================================
+   BACK BUTTON
+========================================== */
+
+.back-button {
+    display: inline-block;
+    padding: 10px 18px;
+    background: #299466;
+    color: white;
+    text-decoration: none;
+    border-radius: 20px;
+    font-size: 13px;
+    transition: 0.2s;
+}
+
+
+    .back-button:hover {
+        background: #15583f;
+    }
+
+
+/* ==========================================
+   PACKAGE CARD
+========================================== */
+
+.package-card {
+    display: flex;
+    background: #299466;
+    color: white;
+    border-radius: 16px;
+    overflow: hidden;
+    margin-bottom: 25px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, .10);
+}
+
+
+.package-image-container {
+    width: 300px;
+    min-height: 210px;
+    flex-shrink: 0;
+    overflow: hidden;
+}
+
+
+.package-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+
+.package-info {
+    padding: 25px 30px;
+    flex: 1;
+}
+
+
+    .package-info h2 {
+        font-size: 24px;
+        margin-bottom: 8px;
+    }
+
+
+.package-location {
+    display: flex;
+    align-items: center;
+    gap: 7px;
+    color: #d8eee5;
+    font-size: 13px;
+    margin-bottom: 15px;
+}
+
+
+    .package-location span {
+        color: white;
+        font-size: 8px;
+    }
+
+
+.package-info p {
+    color: #f1f8f5;
+    font-size: 13px;
+    line-height: 1.5;
+    max-width: 700px;
+    margin-bottom: 20px;
+}
+
+
+.package-meta {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+}
+
+
+    .package-meta span {
+        background: white;
+        color: #333;
+        padding: 8px 13px;
+        border-radius: 7px;
+        font-size: 12px;
+    }
+
+
+    .package-meta strong {
+        color: #15583f;
+    }
+
+
+/* ==========================================
+   DETAILS GRID
+========================================== */
+
+.details-grid {
+    display: grid;
+    grid-template-columns: 1.5fr 1fr;
+    gap: 25px;
+    margin-bottom: 25px;
+}
+
+
+/* ==========================================
+   DETAILS CARD
+========================================== */
+
+.details-card {
+    background: white;
+    border-radius: 16px;
+    padding: 25px;
+    box-shadow: 0 5px 18px rgba(0, 0, 0, .08);
+}
+
+
+    .details-card h2 {
+        color: #15583f;
+        font-size: 20px;
+        margin-bottom: 20px;
+    }
+
+
+/* ==========================================
+   INFORMATION LIST
+========================================== */
+
+.information-list {
+    display: flex;
+    flex-direction: column;
+}
+
+
+.information-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+    padding: 13px 0;
+    border-bottom: 1px solid #eeeeee;
+}
+
+
+    .information-row:last-child {
+        border-bottom: none;
+    }
+
+
+    .information-row span:first-child {
+        color: #777;
+        font-size: 13px;
+    }
+
+
+    .information-row strong {
+        color: #333;
+        font-size: 13px;
+    }
+
+
+/* ==========================================
+   STATUS BADGE
+========================================== */
+
+.status-badge {
+    background: #fff4df;
+    color: #b87800;
+    padding: 6px 12px;
+    border-radius: 20px;
+    font-size: 11px;
+    font-weight: 600;
+}
+
+
+/* ==========================================
+   PAYMENT BADGE
+========================================== */
+
+.payment-badge {
+    background: #e8f6ef;
+    color: #299466;
+    padding: 6px 12px;
+    border-radius: 20px;
+    font-size: 11px;
+    font-weight: 600;
+}
+
+
+/* ==========================================
+   PRICE CARD
+========================================== */
+
+.price-card {
+    height: fit-content;
+}
+
+
+.price-row {
+    display: flex;
+    justify-content: space-between;
+    padding: 13px 0;
+    color: #666;
+    font-size: 14px;
+}
+
+
+    .price-row strong {
+        color: #333;
+    }
+
+
+.price-card hr {
+    border: none;
+    border-top: 1px solid #eeeeee;
+    margin: 8px 0;
+}
+
+
+.total-row {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 15px;
+    font-size: 18px;
+    color: #15583f;
+}
+
+
+    .total-row strong {
+        color: #299466;
+    }
+
+
+/* ==========================================
+   TRAVELLERS CARD
+========================================== */
+
+.travellers-card {
+    margin-bottom: 25px;
+}
+
+
+.card-heading {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+
+    .card-heading h2 {
+        margin-bottom: 5px;
+    }
+
+
+    .card-heading p {
+        color: #777;
+        font-size: 12px;
+    }
+
+
+.traveller-count {
+    background: #e8f6ef;
+    color: #299466;
+    padding: 7px 14px;
+    border-radius: 20px;
+    font-size: 12px;
+    font-weight: 600;
+}
+
+
+/* ==========================================
+   TRAVELLERS TABLE
+========================================== */
+
+.travellers-table-wrapper {
+    width: 100%;
+    overflow-x: auto;
+}
+
+
+.travellers-table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+
+    .travellers-table th {
+        background: #f4f8f6;
+        color: #15583f;
+        text-align: left;
+        padding: 13px 15px;
+        font-size: 12px;
+        font-weight: 600;
+    }
+
+
+    .travellers-table td {
+        padding: 14px 15px;
+        border-bottom: 1px solid #eeeeee;
+        color: #666;
+        font-size: 13px;
+    }
+
+
+    .travellers-table tbody tr:last-child td {
+        border-bottom: none;
+    }
+
+
+    .travellers-table tbody tr:hover {
+        background: #fafcfa;
+    }
+
+
+    .travellers-table td strong {
+        color: #333;
+    }
+
+
+/* ==========================================
+   SPECIAL REQUEST
+========================================== */
+
+.special-request-card {
+    margin-bottom: 25px;
+}
+
+
+.special-request {
+    background: #f8faf9;
+    border-left: 4px solid #299466;
+    border-radius: 7px;
+    padding: 15px;
+    color: #555;
+    font-size: 13px;
+    line-height: 1.6;
+}
+
+
+.no-request {
+    background: #f8f8f8;
+    border-radius: 7px;
+    padding: 15px;
+    color: #888;
+    font-size: 13px;
+}
+
+
+/* ==========================================
+   CANCEL BOOKING CARD
+========================================== */
+
+.cancel-card {
+    background: #fff8f7;
+    border: 1px solid #f0d7d2;
+    border-radius: 16px;
+    padding: 22px 25px;
+    margin-bottom: 15px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 25px;
+}
+
+
+.cancel-info {
+    flex: 1;
+}
+
+
+    .cancel-info h2 {
+        color: #b43d32;
+        font-size: 18px;
+        margin-bottom: 7px;
+    }
+
+
+    .cancel-info p {
+        color: #777;
+        font-size: 13px;
+        line-height: 1.5;
+        margin: 0;
+    }
+
+
+.cancel-button {
+    border: none;
+    background: #d9534f;
+    color: white;
+    padding: 11px 24px;
+    border-radius: 22px;
+    font-size: 13px;
+    font-weight: 600;
+    cursor: pointer;
+    white-space: nowrap;
+    transition: 0.2s ease;
+}
+
+
+    .cancel-button:hover {
+        background: #b52b27;
+        transform: translateY(-1px);
+    }
+
+
+/* ==========================================
+   CANCEL MESSAGE
+========================================== */
+
+.cancel-message {
+    display: block;
+    text-align: center;
+    color: #777;
+    font-size: 13px;
+    margin-top: 12px;
+    margin-bottom: 20px;
+}
+
+
+/* ==========================================
+   ERROR CARD
+========================================== */
+
+.error-card {
+    background: white;
+    border-radius: 16px;
+    padding: 50px 25px;
+    text-align: center;
+    box-shadow: 0 5px 18px rgba(0, 0, 0, .08);
+}
+
+
+    .error-card h3 {
+        color: #333;
+        margin-bottom: 8px;
+    }
+
+
+    .error-card p {
+        color: #777;
+        font-size: 13px;
+        margin-bottom: 20px;
+    }
+
+
+/* ==========================================
+   RESPONSIVE - TABLET
+========================================== */
+
+@media (max-width: 900px) {
+
+    .booking-details-container {
+        padding: 20px 25px 40px;
+    }
+
+
+    .details-grid {
+        grid-template-columns: 1fr;
+    }
+
+
+    .package-image-container {
+        width: 250px;
+    }
+}
+
+
+/* ==========================================
+   RESPONSIVE - MOBILE
+========================================== */
+
+@media (max-width: 700px) {
+
+    .booking-details-container {
+        margin: 15px auto;
+        padding: 15px 20px 40px;
+    }
+
+
+    .details-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 15px;
+    }
+
+
+        .details-header h1 {
+            font-size: 25px;
+        }
+
+
+    .package-card {
+        flex-direction: column;
+    }
+
+
+    .package-image-container {
+        width: 100%;
+        height: 220px;
+        min-height: 220px;
+    }
+
+
+    .package-info {
+        padding: 20px;
+    }
+
+
+        .package-info h2 {
+            font-size: 21px;
+        }
+
+
+    .package-meta {
+        gap: 8px;
+    }
+
+
+    .details-card {
+        padding: 20px;
+    }
+
+
+    .information-row {
+        align-items: flex-start;
+    }
+
+
+    .cancel-card {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+
+    .cancel-button {
+        width: 100%;
+    }
+}
+
+
+/* ==========================================
+   RESPONSIVE - SMALL MOBILE
+========================================== */
+
+@media (max-width: 450px) {
+
+    .booking-details-container {
+        padding: 15px;
+    }
+
+
+    .details-header h1 {
+        font-size: 23px;
+    }
+
+
+    .details-header p {
+        font-size: 12px;
+    }
+
+
+    .package-image-container {
+        height: 190px;
+        min-height: 190px;
+    }
+
+
+    .package-info {
+        padding: 18px;
+    }
+
+
+    .details-card {
+        padding: 17px;
+    }
+
+
+    .information-row {
+        flex-direction: column;
+        gap: 6px;
+    }
+
+
+    .card-heading {
+        align-items: flex-start;
+        gap: 10px;
+    }
+
+
+    .traveller-count {
+        flex-shrink: 0;
+    }
+
+
+    .cancel-card {
+        padding: 18px;
+    }
+}

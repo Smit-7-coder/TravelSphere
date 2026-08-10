@@ -133,13 +133,17 @@
     <Content Include="About.aspx" />
     <Content Include="Account\Login.aspx" />
     <Content Include="Account\Register.aspx" />
+    <Content Include="Assets\css\about-us.css" />
+    <Content Include="Assets\css\booking-details.css" />
     <Content Include="Assets\css\booking-success.css" />
     <Content Include="Assets\css\booking.css" />
+    <Content Include="Assets\css\budget-planner.css" />
     <Content Include="Assets\css\destination-details.css" />
     <Content Include="Assets\css\home.css" />
     <Content Include="Assets\css\Login.css" />
     <Content Include="Assets\css\my-trips.css" />
     <Content Include="Assets\css\package-details.css" />
+    <Content Include="Assets\css\profile.css" />
     <Content Include="Assets\css\Register.css" />
     <Content Include="Assets\css\search.css" />
     <Content Include="Assets\css\traveller-master.css" />
@@ -220,12 +224,16 @@
     <Content Include="Scripts\WebForms\WebParts.js" />
     <Content Include="Scripts\WebForms\WebUIValidation.js" />
     <Content Include="Site.Master" />
+    <Content Include="Traveller\AboutUs.aspx" />
     <Content Include="Traveller\Booking.aspx" />
+    <Content Include="Traveller\BookingDetails.aspx" />
     <Content Include="Traveller\BookingSuccess.aspx" />
+    <Content Include="Traveller\BudgetPlanner.aspx" />
     <Content Include="Traveller\DestinationDetails.aspx" />
     <Content Include="Traveller\Home.aspx" />
     <Content Include="Traveller\MyTrips.aspx" />
     <Content Include="Traveller\PackageDetails.aspx" />
+    <Content Include="Traveller\Profile.aspx" />
     <Content Include="Traveller\Search.aspx" />
     <Content Include="ViewSwitcher.ascx" />
     <Content Include="Web.config" />
@@ -288,6 +296,13 @@
     <Compile Include="Site.Mobile.Master.designer.cs">
       <DependentUpon>Site.Mobile.Master</DependentUpon>
     </Compile>
+    <Compile Include="Traveller\AboutUs.aspx.cs">
+      <DependentUpon>AboutUs.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Traveller\AboutUs.aspx.designer.cs">
+      <DependentUpon>AboutUs.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Traveller\Booking.aspx.cs">
       <DependentUpon>Booking.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -295,12 +310,26 @@
     <Compile Include="Traveller\Booking.aspx.designer.cs">
       <DependentUpon>Booking.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Traveller\BookingDetails.aspx.cs">
+      <DependentUpon>BookingDetails.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Traveller\BookingDetails.aspx.designer.cs">
+      <DependentUpon>BookingDetails.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Traveller\BookingSuccess.aspx.cs">
       <DependentUpon>BookingSuccess.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="Traveller\BookingSuccess.aspx.designer.cs">
       <DependentUpon>BookingSuccess.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Traveller\BudgetPlanner.aspx.cs">
+      <DependentUpon>BudgetPlanner.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Traveller\BudgetPlanner.aspx.designer.cs">
+      <DependentUpon>BudgetPlanner.aspx</DependentUpon>
     </Compile>
     <Compile Include="Traveller\DestinationDetails.aspx.cs">
       <DependentUpon>DestinationDetails.aspx</DependentUpon>
@@ -329,6 +358,13 @@
     </Compile>
     <Compile Include="Traveller\PackageDetails.aspx.designer.cs">
       <DependentUpon>PackageDetails.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Traveller\Profile.aspx.cs">
+      <DependentUpon>Profile.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Traveller\Profile.aspx.designer.cs">
+      <DependentUpon>Profile.aspx</DependentUpon>
     </Compile>
     <Compile Include="Traveller\Search.aspx.cs">
       <DependentUpon>Search.aspx</DependentUpon>
