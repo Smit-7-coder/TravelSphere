@@ -23,7 +23,10 @@
     =========================================== -->
 
     <section class="hero-section">
-</section>
+
+        <div class="hero-overlay"></div>
+
+    </section>
 
 
 
@@ -43,11 +46,13 @@
             <div class="section-header">
 
                 <div>
+
                     <h2>Popular Destinations</h2>
 
                     <p>
                         Discover the most loved destinations
                     </p>
+
                 </div>
 
 
@@ -67,30 +72,33 @@
 
             <div class="destination-grid">
 
-
                 <asp:Repeater
                     ID="rptDestinations"
                     runat="server">
 
                     <ItemTemplate>
 
-
                         <div class="destination-card">
 
 
-                            <!-- IMAGE -->
+                            <!-- ==========================
+                                 DESTINATION IMAGE
+                            =========================== -->
 
                             <div class="destination-image">
 
                                 <img
                                     src='<%# ResolveUrl("~/Assets/images/" + Eval("Image")) %>'
-                                    alt='<%# Eval("DestinationName") %>' />
+                                    alt='<%# Eval("DestinationName") %>'
+                                    loading="lazy" />
 
                             </div>
 
 
 
-                            <!-- CONTENT -->
+                            <!-- ==========================
+                                 DESTINATION CONTENT
+                            =========================== -->
 
                             <div class="destination-content">
 
@@ -103,7 +111,9 @@
 
                                     <span class="location-icon">●</span>
 
-                                    <%# Eval("State") %>
+                                    <span>
+                                        <%# Eval("State") %>
+                                    </span>
 
                                 </div>
 
@@ -114,24 +124,21 @@
 
 
                                 <a
-                                      href='<%# ResolveUrl("~/Traveller/DestinationDetails.aspx?id=" + Eval("DestinationId")) %>'
+                                    href='<%# ResolveUrl("~/Traveller/DestinationDetails.aspx?id=" + Eval("DestinationId")) %>'
                                     class="view-btn">
 
                                     View
 
                                 </a>
 
-
                             </div>
 
 
                         </div>
 
-
                     </ItemTemplate>
 
                 </asp:Repeater>
-
 
             </div>
 
@@ -162,8 +169,9 @@
 
 
 
-            <div class="package-list">
+            <!-- PACKAGE LIST -->
 
+            <div class="package-list">
 
                 <asp:Repeater
                     ID="rptPackages"
@@ -171,28 +179,33 @@
 
                     <ItemTemplate>
 
-
                         <div class="package-card">
 
 
-                            <!-- PACKAGE IMAGE -->
+                            <!-- ==========================
+                                 PACKAGE IMAGE
+                            =========================== -->
 
                             <div class="package-image">
 
                                 <img
                                     src='<%# ResolveUrl("~/Assets/images/" + Eval("PackageImage")) %>'
-                                    alt='<%# Eval("PackageName") %>' />
+                                    alt='<%# Eval("PackageName") %>'
+                                    loading="lazy" />
 
                             </div>
 
 
 
-                            <!-- PACKAGE INFO -->
+                            <!-- ==========================
+                                 PACKAGE CONTENT
+                            =========================== -->
 
                             <div class="package-content">
 
 
                                 <div class="package-main-info">
+
 
                                     <h3>
                                         <%# Eval("PackageName") %>
@@ -212,7 +225,8 @@
                                     </p>
 
 
-                                    <!-- DETAILS -->
+
+                                    <!-- PACKAGE DETAILS -->
 
                                     <div class="package-details">
 
@@ -237,11 +251,14 @@
 
                                     </div>
 
+
                                 </div>
 
 
 
-                                <!-- VIEW DETAILS -->
+                                <!-- ==========================
+                                     VIEW DETAILS BUTTON
+                                =========================== -->
 
                                 <div class="package-action">
 
@@ -261,11 +278,9 @@
 
                         </div>
 
-
                     </ItemTemplate>
 
                 </asp:Repeater>
-
 
             </div>
 

@@ -131,6 +131,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="About.aspx" />
+    <Content Include="Account\ForgotPassword.aspx" />
     <Content Include="Account\Login.aspx" />
     <Content Include="Account\Register.aspx" />
     <Content Include="Assets\css\about-us.css" />
@@ -139,6 +140,7 @@
     <Content Include="Assets\css\booking.css" />
     <Content Include="Assets\css\budget-planner.css" />
     <Content Include="Assets\css\destination-details.css" />
+    <Content Include="Assets\css\forgot-password.css" />
     <Content Include="Assets\css\home.css" />
     <Content Include="Assets\css\Login.css" />
     <Content Include="Assets\css\my-trips.css" />
@@ -241,6 +243,13 @@
     <Content Include="Site.Mobile.Master" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Account\ForgotPassword.aspx.cs">
+      <DependentUpon>ForgotPassword.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Account\ForgotPassword.aspx.designer.cs">
+      <DependentUpon>ForgotPassword.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Account\Login.aspx.cs">
       <DependentUpon>Login.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
