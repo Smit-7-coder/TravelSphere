@@ -72,6 +72,7 @@
                 </p>
 
 
+               
                 <!-- ==========================================
                      NUMBER OF DAYS
                 =========================================== -->
@@ -91,6 +92,32 @@
                         min="1"
                         placeholder="Example: 5">
                     </asp:TextBox>
+
+
+                    <asp:RequiredFieldValidator
+                        ID="rfvDays"
+                        runat="server"
+                        ControlToValidate="txtDays"
+                        ErrorMessage="Number of days is required."
+                        ForeColor="Red"
+                        Display="Dynamic"
+                        ValidationGroup="BudgetValidation">
+                    </asp:RequiredFieldValidator>
+
+
+                    <asp:RangeValidator
+                        ID="rvDays"
+                        runat="server"
+                        ControlToValidate="txtDays"
+                        MinimumValue="1"
+                        MaximumValue="365"
+                        Type="Integer"
+                        ErrorMessage="Number of days must be between 1 and 365."
+                        ForeColor="Red"
+                        Display="Dynamic"
+                        ValidationGroup="BudgetValidation">
+                    </asp:RangeValidator>
+
 
                 </div>
 
@@ -115,6 +142,32 @@
                         placeholder="Example: 2">
                     </asp:TextBox>
 
+
+                    <asp:RequiredFieldValidator
+                        ID="rfvPeople"
+                        runat="server"
+                        ControlToValidate="txtPeople"
+                        ErrorMessage="Number of people is required."
+                        ForeColor="Red"
+                        Display="Dynamic"
+                        ValidationGroup="BudgetValidation">
+                    </asp:RequiredFieldValidator>
+
+
+                    <asp:RangeValidator
+                        ID="rvPeople"
+                        runat="server"
+                        ControlToValidate="txtPeople"
+                        MinimumValue="1"
+                        MaximumValue="100"
+                        Type="Integer"
+                        ErrorMessage="Number of people must be between 1 and 100."
+                        ForeColor="Red"
+                        Display="Dynamic"
+                        ValidationGroup="BudgetValidation">
+                    </asp:RangeValidator>
+
+
                 </div>
 
 
@@ -137,6 +190,32 @@
                         min="1"
                         placeholder="Example: 1">
                     </asp:TextBox>
+
+
+                    <asp:RequiredFieldValidator
+                        ID="rfvRooms"
+                        runat="server"
+                        ControlToValidate="txtRooms"
+                        ErrorMessage="Number of rooms is required."
+                        ForeColor="Red"
+                        Display="Dynamic"
+                        ValidationGroup="BudgetValidation">
+                    </asp:RequiredFieldValidator>
+
+
+                    <asp:RangeValidator
+                        ID="rvRooms"
+                        runat="server"
+                        ControlToValidate="txtRooms"
+                        MinimumValue="1"
+                        MaximumValue="100"
+                        Type="Integer"
+                        ErrorMessage="Number of rooms must be between 1 and 100."
+                        ForeColor="Red"
+                        Display="Dynamic"
+                        ValidationGroup="BudgetValidation">
+                    </asp:RangeValidator>
+
 
                 </div>
 
@@ -164,6 +243,19 @@
 
                     </asp:DropDownList>
 
+
+                    <asp:RequiredFieldValidator
+                        ID="rfvTravelType"
+                        runat="server"
+                        ControlToValidate="ddlTravelType"
+                        InitialValue=""
+                        ErrorMessage="Please select a travel type."
+                        ForeColor="Red"
+                        Display="Dynamic"
+                        ValidationGroup="BudgetValidation">
+                    </asp:RequiredFieldValidator>
+
+
                 </div>
 
 
@@ -189,6 +281,19 @@
                         </asp:ListItem>
 
                     </asp:DropDownList>
+
+
+                    <asp:RequiredFieldValidator
+                        ID="rfvHotelType"
+                        runat="server"
+                        ControlToValidate="ddlHotelType"
+                        InitialValue=""
+                        ErrorMessage="Please select a hotel type."
+                        ForeColor="Red"
+                        Display="Dynamic"
+                        ValidationGroup="BudgetValidation">
+                    </asp:RequiredFieldValidator>
+
 
                 </div>
 
@@ -217,6 +322,32 @@
                             placeholder="Example: 100">
                         </asp:TextBox>
 
+
+                        <asp:RequiredFieldValidator
+                            ID="rfvMinDistance"
+                            runat="server"
+                            ControlToValidate="txtMinDistance"
+                            ErrorMessage="Minimum distance is required."
+                            ForeColor="Red"
+                            Display="Dynamic"
+                            ValidationGroup="BudgetValidation">
+                        </asp:RequiredFieldValidator>
+
+
+                        <asp:RangeValidator
+                            ID="rvMinDistance"
+                            runat="server"
+                            ControlToValidate="txtMinDistance"
+                            MinimumValue="0"
+                            MaximumValue="100000"
+                            Type="Double"
+                            ErrorMessage="Minimum distance must be between 0 and 100000 KM."
+                            ForeColor="Red"
+                            Display="Dynamic"
+                            ValidationGroup="BudgetValidation">
+                        </asp:RangeValidator>
+
+
                     </div>
 
 
@@ -236,6 +367,46 @@
                             step="0.01"
                             placeholder="Example: 300">
                         </asp:TextBox>
+
+
+                        <asp:RequiredFieldValidator
+                            ID="rfvMaxDistance"
+                            runat="server"
+                            ControlToValidate="txtMaxDistance"
+                            ErrorMessage="Maximum distance is required."
+                            ForeColor="Red"
+                            Display="Dynamic"
+                            ValidationGroup="BudgetValidation">
+                        </asp:RequiredFieldValidator>
+
+
+                        <asp:RangeValidator
+                            ID="rvMaxDistance"
+                            runat="server"
+                            ControlToValidate="txtMaxDistance"
+                            MinimumValue="0"
+                            MaximumValue="100000"
+                            Type="Double"
+                            ErrorMessage="Maximum distance must be between 0 and 100000 KM."
+                            ForeColor="Red"
+                            Display="Dynamic"
+                            ValidationGroup="BudgetValidation">
+                        </asp:RangeValidator>
+
+
+                        <asp:CompareValidator
+                            ID="cvDistance"
+                            runat="server"
+                            ControlToValidate="txtMaxDistance"
+                            ControlToCompare="txtMinDistance"
+                            Operator="GreaterThanEqual"
+                            Type="Double"
+                            ErrorMessage="Maximum distance must be greater than or equal to minimum distance."
+                            ForeColor="Red"
+                            Display="Dynamic"
+                            ValidationGroup="BudgetValidation">
+                        </asp:CompareValidator>
+
 
                     </div>
 
@@ -288,7 +459,9 @@
                     runat="server"
                     Text="Calculate My Budget"
                     CssClass="calculate-button"
-                    OnClick="btnCalculate_Click" />
+                    OnClick="btnCalculate_Click"
+                    CausesValidation="true"
+                    ValidationGroup="BudgetValidation" />
 
 
                 <!-- ==========================================
@@ -522,7 +695,8 @@
                         runat="server"
                         Text="Save Plan"
                         CssClass="save-button"
-                        OnClick="btnSavePlan_Click" />
+                        OnClick="btnSavePlan_Click"
+                        CausesValidation="false" />
 
 
                 </asp:Panel>

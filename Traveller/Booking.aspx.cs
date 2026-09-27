@@ -6,16 +6,12 @@ namespace TravelSphere.Traveller
 {
     public partial class Booking : System.Web.UI.Page
     {
-        string connectionString =
-            ConfigurationManager.ConnectionStrings["TravelSphereDB"].ConnectionString;
+        private string connectionString =
+            ConfigurationManager
+                .ConnectionStrings["TravelSphereDB"]
+                .ConnectionString;
 
-
-        int packageId;
-
-
-        // ==========================================
-        // PAGE LOAD
-        // ==========================================
+        private int packageId;
 
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -24,255 +20,159 @@ namespace TravelSphere.Traveller
                 out packageId))
             {
                 Response.Redirect("Home.aspx");
-
                 return;
             }
-
 
             if (!IsPostBack)
             {
                 LoadPackage(packageId);
 
-
-                // ==========================================
-                // GET USER DETAILS FROM SESSION
-                // ==========================================
-
-                if (Session["UserId"] != null)
-                {
-                    LoadUserDetails();
-                }
-                else
+                if (Session["UserId"] == null)
                 {
                     Response.Redirect(
                         "~/Account/Login.aspx");
 
                     return;
                 }
+
+                LoadUserDetails();
             }
         }
-
-
-        // ==========================================
-        // LOAD USER DETAILS
-        // ==========================================
 
         private void LoadUserDetails()
         {
             int userId =
-                Convert.ToInt32(
-                    Session["UserId"]);
+                Convert.ToInt32(Session["UserId"]);
 
+            string query = @"
+                SELECT
+                    FullName,
+                    Email,
+                    Phone
+                FROM Users
+                WHERE UserId = @UserId";
 
             using (SqlConnection con =
                    new SqlConnection(connectionString))
             {
-                string query = @"
-                    SELECT
-                        FullName,
-                        Email,
-                        Phone
-                    FROM Users
-                    WHERE UserId = @UserId";
-
-
-                SqlCommand cmd =
-                    new SqlCommand(
-                        query,
-                        con);
-
-
-                cmd.Parameters.AddWithValue(
-                    "@UserId",
-                    userId);
-
-
-                con.Open();
-
-
-                SqlDataReader reader =
-                    cmd.ExecuteReader();
-
-
-                if (reader.Read())
+                using (SqlCommand cmd =
+                       new SqlCommand(query, con))
                 {
-                    txtFullName.Text =
-                        reader["FullName"].ToString();
+                    cmd.Parameters.AddWithValue(
+                        "@UserId",
+                        userId);
 
+                    con.Open();
 
-                    txtEmail.Text =
-                        reader["Email"].ToString();
+                    using (SqlDataReader reader =
+                           cmd.ExecuteReader())
+                    {
+                        if (reader.Read())
+                        {
+                            txtFullName.Text =
+                                reader["FullName"].ToString();
 
+                            txtEmail.Text =
+                                reader["Email"].ToString();
 
-                    txtPhone.Text =
-                        reader["Phone"].ToString();
+                            txtPhone.Text =
+                                reader["Phone"].ToString();
+                        }
+                    }
                 }
-
-
-                reader.Close();
             }
         }
-
-
-        // ==========================================
-        // LOAD PACKAGE
-        // ==========================================
 
         private void LoadPackage(int packageId)
         {
+            string query = @"
+                SELECT
+                    P.PackageName,
+                    P.PackageImage,
+                    P.DurationDays,
+                    P.AdultPrice,
+                    P.ChildPrice,
+                    D.DestinationName,
+                    D.State
+                FROM Packages P
+                INNER JOIN Destinations D
+                    ON P.DestinationId = D.DestinationId
+                WHERE P.PackageId = @PackageId
+                AND P.IsActive = 1";
+
             using (SqlConnection con =
                    new SqlConnection(connectionString))
             {
-                string query = @"
-                    SELECT
-                        P.PackageName,
-                        P.PackageImage,
-                        P.DurationDays,
-                        P.AdultPrice,
-                        P.ChildPrice,
-                        D.DestinationName,
-                        D.State
-                    FROM Packages P
-                    INNER JOIN Destinations D
-                        ON P.DestinationId =
-                           D.DestinationId
-                    WHERE P.PackageId = @PackageId
-                    AND P.IsActive = 1";
-
-
-                SqlCommand cmd =
-                    new SqlCommand(
-                        query,
-                        con);
-
-
-                cmd.Parameters.AddWithValue(
-                    "@PackageId",
-                    packageId);
-
-
-                con.Open();
-
-
-                SqlDataReader reader =
-                    cmd.ExecuteReader();
-
-
-                if (reader.Read())
+                using (SqlCommand cmd =
+                       new SqlCommand(query, con))
                 {
-                    // ==========================================
-                    // PACKAGE IMAGE
-                    // ==========================================
+                    cmd.Parameters.AddWithValue(
+                        "@PackageId",
+                        packageId);
 
-                    imgPackage.ImageUrl =
-                        "~/Assets/images/"
-                        + reader["PackageImage"].ToString();
+                    con.Open();
 
+                    using (SqlDataReader reader =
+                           cmd.ExecuteReader())
+                    {
+                        if (reader.Read())
+                        {
+                            decimal adultPrice =
+                                Convert.ToDecimal(
+                                    reader["AdultPrice"]);
 
-                    // ==========================================
-                    // PACKAGE NAME
-                    // ==========================================
+                            decimal childPrice =
+                                Convert.ToDecimal(
+                                    reader["ChildPrice"]);
 
-                    lblPackageName.Text =
-                        reader["PackageName"].ToString();
+                            imgPackage.ImageUrl =
+                                "~/Assets/images/" +
+                                reader["PackageImage"].ToString();
 
+                            lblPackageName.Text =
+                                reader["PackageName"].ToString();
 
-                    // ==========================================
-                    // DESTINATION
-                    // ==========================================
+                            lblDestination.Text =
+                                reader["DestinationName"].ToString()
+                                + ", " +
+                                reader["State"].ToString();
 
-                    lblDestination.Text =
-                        reader["DestinationName"].ToString()
-                        + ", "
-                        + reader["State"].ToString();
+                            lblDuration.Text =
+                                reader["DurationDays"].ToString()
+                                + " Days";
 
+                            lblAdultPrice.Text =
+                                adultPrice.ToString("N0");
 
-                    // ==========================================
-                    // DURATION
-                    // ==========================================
+                            lblChildPrice.Text =
+                                childPrice.ToString("N0");
 
-                    lblDuration.Text =
-                        reader["DurationDays"].ToString()
-                        + " Days";
+                            lblAdultSummary.Text =
+                                adultPrice.ToString("N0");
 
+                            lblChildSummary.Text =
+                                childPrice.ToString("N0");
 
-                    // ==========================================
-                    // ADULT PRICE
-                    // ==========================================
-
-                    decimal adultPrice =
-                        Convert.ToDecimal(
-                            reader["AdultPrice"]);
-
-
-                    // ==========================================
-                    // CHILD PRICE
-                    // ==========================================
-
-                    decimal childPrice =
-                        Convert.ToDecimal(
-                            reader["ChildPrice"]);
-
-
-                    lblAdultPrice.Text =
-                        adultPrice.ToString("N0");
-
-
-                    lblChildPrice.Text =
-                        childPrice.ToString("N0");
-
-
-                    // ==========================================
-                    // PRICE SUMMARY
-                    // ==========================================
-
-                    lblAdultSummary.Text =
-                        adultPrice.ToString("N0");
-
-
-                    lblChildSummary.Text =
-                        childPrice.ToString("N0");
-
-
-                    // ==========================================
-                    // INITIAL TOTAL
-                    // ==========================================
-
-                    lblTotalAmount.Text =
-                        adultPrice.ToString("N0");
+                            lblTotalAmount.Text =
+                                adultPrice.ToString("N0");
+                        }
+                        else
+                        {
+                            Response.Redirect("Home.aspx");
+                        }
+                    }
                 }
-                else
-                {
-                    Response.Redirect("Home.aspx");
-                }
-
-
-                reader.Close();
             }
         }
-
-
-        // ==========================================
-        // CONFIRM BOOKING
-        // ==========================================
 
         protected void btnConfirmBooking_Click(
             object sender,
             EventArgs e)
         {
-            // ==========================================
-            // CHECK PAGE VALIDATION
-            // ==========================================
-
             if (!Page.IsValid)
             {
                 return;
             }
-
-
-            // ==========================================
-            // CHECK USER LOGIN
-            // ==========================================
 
             if (Session["UserId"] == null)
             {
@@ -282,30 +182,20 @@ namespace TravelSphere.Traveller
                 return;
             }
 
-
             int userId =
-                Convert.ToInt32(
-                    Session["UserId"]);
+                Convert.ToInt32(Session["UserId"]);
 
-
-            // ==========================================
-            // CHECK TRAVEL DATE
-            // ==========================================
+            DateTime travelDate;
 
             if (!DateTime.TryParse(
                 txtTravelDate.Text,
-                out DateTime travelDate))
+                out travelDate))
             {
                 lblMessage.Text =
                     "Please select a valid travel date.";
 
                 return;
             }
-
-
-            // ==========================================
-            // CHECK PAST DATE
-            // ==========================================
 
             if (travelDate.Date < DateTime.Today)
             {
@@ -315,14 +205,11 @@ namespace TravelSphere.Traveller
                 return;
             }
 
-
-            // ==========================================
-            // GET ADULTS
-            // ==========================================
+            int adults;
 
             if (!int.TryParse(
                 txtAdults.Text,
-                out int adults))
+                out adults))
             {
                 lblMessage.Text =
                     "Please enter a valid number of adults.";
@@ -330,25 +217,17 @@ namespace TravelSphere.Traveller
                 return;
             }
 
-
-            // ==========================================
-            // GET CHILDREN
-            // ==========================================
+            int children;
 
             if (!int.TryParse(
                 txtChildren.Text,
-                out int children))
+                out children))
             {
                 lblMessage.Text =
                     "Please enter a valid number of children.";
 
                 return;
             }
-
-
-            // ==========================================
-            // VALIDATE ADULTS
-            // ==========================================
 
             if (adults < 1)
             {
@@ -358,11 +237,6 @@ namespace TravelSphere.Traveller
                 return;
             }
 
-
-            // ==========================================
-            // VALIDATE CHILDREN
-            // ==========================================
-
             if (children < 0)
             {
                 lblMessage.Text =
@@ -371,418 +245,362 @@ namespace TravelSphere.Traveller
                 return;
             }
 
-
-            // ==========================================
-            // TOTAL TRAVELLERS
-            // ==========================================
-
             int numberOfPersons =
                 adults + children;
 
+            decimal adultPrice;
+            decimal childPrice;
 
-            // ==========================================
-            // GET PACKAGE PRICE
-            // ==========================================
-
-            decimal adultPrice = 0;
-
-            decimal childPrice = 0;
-
-
-            using (SqlConnection con =
-                   new SqlConnection(connectionString))
+            if (!GetPackagePrices(
+                packageId,
+                out adultPrice,
+                out childPrice))
             {
-                string priceQuery = @"
-                    SELECT
-                        AdultPrice,
-                        ChildPrice
-                    FROM Packages
-                    WHERE PackageId = @PackageId
-                    AND IsActive = 1";
+                lblMessage.Text =
+                    "Package not found.";
 
-
-                SqlCommand priceCmd =
-                    new SqlCommand(
-                        priceQuery,
-                        con);
-
-
-                priceCmd.Parameters.AddWithValue(
-                    "@PackageId",
-                    packageId);
-
-
-                con.Open();
-
-
-                SqlDataReader priceReader =
-                    priceCmd.ExecuteReader();
-
-
-                if (priceReader.Read())
-                {
-                    adultPrice =
-                        Convert.ToDecimal(
-                            priceReader["AdultPrice"]);
-
-
-                    childPrice =
-                        Convert.ToDecimal(
-                            priceReader["ChildPrice"]);
-                }
-                else
-                {
-                    priceReader.Close();
-
-                    lblMessage.Text =
-                        "Package not found.";
-
-                    return;
-                }
-
-
-                priceReader.Close();
+                return;
             }
 
-
-            // ==========================================
-            // CALCULATE PACKAGE AMOUNT
-            // ==========================================
-
             decimal packageAmount =
-                (adultPrice * adults)
-                +
+                (adultPrice * adults) +
                 (childPrice * children);
 
-
-            // ==========================================
-            // TAX
-            // ==========================================
-
             decimal taxAmount = 0;
-
-
-            // ==========================================
-            // TOTAL AMOUNT
-            // ==========================================
 
             decimal totalAmount =
                 packageAmount + taxAmount;
 
+            int bookingId;
 
-            // ==========================================
-            // BOOKING ID
-            // ==========================================
+            if (!SaveBooking(
+                userId,
+                packageId,
+                travelDate,
+                numberOfPersons,
+                packageAmount,
+                taxAmount,
+                totalAmount,
+                out bookingId))
+            {
+                return;
+            }
 
-            int bookingId = 0;
+            Session["BookingId"] = bookingId;
 
+            Response.Redirect(
+                "BookingSuccess.aspx?id=" +
+                bookingId);
+        }
 
-            // ==========================================
-            // DATABASE TRANSACTION
-            // ==========================================
+        private bool GetPackagePrices(
+            int packageId,
+            out decimal adultPrice,
+            out decimal childPrice)
+        {
+            adultPrice = 0;
+            childPrice = 0;
+
+            string query = @"
+                SELECT
+                    AdultPrice,
+                    ChildPrice
+                FROM Packages
+                WHERE PackageId = @PackageId
+                AND IsActive = 1";
+
+            using (SqlConnection con =
+                   new SqlConnection(connectionString))
+            {
+                using (SqlCommand cmd =
+                       new SqlCommand(query, con))
+                {
+                    cmd.Parameters.AddWithValue(
+                        "@PackageId",
+                        packageId);
+
+                    con.Open();
+
+                    using (SqlDataReader reader =
+                           cmd.ExecuteReader())
+                    {
+                        if (!reader.Read())
+                        {
+                            return false;
+                        }
+
+                        adultPrice =
+                            Convert.ToDecimal(
+                                reader["AdultPrice"]);
+
+                        childPrice =
+                            Convert.ToDecimal(
+                                reader["ChildPrice"]);
+
+                        return true;
+                    }
+                }
+            }
+        }
+
+        private bool SaveBooking(
+            int userId,
+            int packageId,
+            DateTime travelDate,
+            int numberOfPersons,
+            decimal packageAmount,
+            decimal taxAmount,
+            decimal totalAmount,
+            out int bookingId)
+        {
+            bookingId = 0;
 
             using (SqlConnection con =
                    new SqlConnection(connectionString))
             {
                 con.Open();
 
-
                 SqlTransaction transaction =
                     con.BeginTransaction();
 
-
-                bool transactionCompleted = false;
-
-
                 try
                 {
-                    // ==========================================
-                    // INSERT BOOKING
-                    // ==========================================
-
-                    string bookingQuery = @"
-                        INSERT INTO Bookings
-                        (
-                            UserId,
-                            PackageId,
-                            BookingDate,
-                            TravelDate,
-                            NumberOfPersons,
-                            SpecialRequest,
-                            PackageAmount,
-                            TaxAmount,
-                            TotalAmount,
-                            BookingStatus,
-                            PaymentStatus
-                        )
-                        VALUES
-                        (
-                            @UserId,
-                            @PackageId,
-                            @BookingDate,
-                            @TravelDate,
-                            @NumberOfPersons,
-                            @SpecialRequest,
-                            @PackageAmount,
-                            @TaxAmount,
-                            @TotalAmount,
-                            @BookingStatus,
-                            @PaymentStatus
-                        );
-
-                        SELECT SCOPE_IDENTITY();
-                    ";
-
-
-                    SqlCommand bookingCmd =
-                        new SqlCommand(
-                            bookingQuery,
-                            con,
-                            transaction);
-
-
-                    bookingCmd.Parameters.AddWithValue(
-                        "@UserId",
-                        userId);
-
-
-                    bookingCmd.Parameters.AddWithValue(
-                        "@PackageId",
-                        packageId);
-
-
-                    bookingCmd.Parameters.AddWithValue(
-                        "@BookingDate",
-                        DateTime.Now);
-
-
-                    bookingCmd.Parameters.AddWithValue(
-                        "@TravelDate",
-                        travelDate.Date);
-
-
-                    bookingCmd.Parameters.AddWithValue(
-                        "@NumberOfPersons",
-                        numberOfPersons);
-
-
-                    bookingCmd.Parameters.AddWithValue(
-                        "@SpecialRequest",
-                        txtSpecialRequest.Text.Trim());
-
-
-                    bookingCmd.Parameters.AddWithValue(
-                        "@PackageAmount",
-                        packageAmount);
-
-
-                    bookingCmd.Parameters.AddWithValue(
-                        "@TaxAmount",
-                        taxAmount);
-
-
-                    bookingCmd.Parameters.AddWithValue(
-                        "@TotalAmount",
+                    bookingId = InsertBooking(
+                        con,
+                        transaction,
+                        userId,
+                        packageId,
+                        travelDate,
+                        numberOfPersons,
+                        packageAmount,
+                        taxAmount,
                         totalAmount);
 
-
-                    bookingCmd.Parameters.AddWithValue(
-                        "@BookingStatus",
-                        "Pending");
-
-
-                    bookingCmd.Parameters.AddWithValue(
-                        "@PaymentStatus",
-                        "Pending");
-
-
-                    bookingId =
-                        Convert.ToInt32(
-                            bookingCmd.ExecuteScalar());
-
-
-                    // ==========================================
-                    // INSERT TRAVELLERS
-                    // ==========================================
-
-                    for (
-                        int i = 1;
-                        i <= numberOfPersons;
-                        i++)
-                    {
-                        string travellerName =
-                            Request.Form[
-                                "TravellerName_" + i];
-
-
-                        string travellerAgeText =
-                            Request.Form[
-                                "TravellerAge_" + i];
-
-
-                        string travellerGender =
-                            Request.Form[
-                                "TravellerGender_" + i];
-
-
-                        // ==========================================
-                        // VALIDATE NAME
-                        // ==========================================
-
-                        if (string.IsNullOrWhiteSpace(
-                            travellerName))
-                        {
-                            throw new Exception(
-                                "Please enter the name of Traveller "
-                                + i
-                                + ".");
-                        }
-
-
-                        // ==========================================
-                        // VALIDATE AGE
-                        // ==========================================
-
-                        if (!int.TryParse(
-                            travellerAgeText,
-                            out int travellerAge))
-                        {
-                            throw new Exception(
-                                "Please enter a valid age for Traveller "
-                                + i
-                                + ".");
-                        }
-
-
-                        if (
-                            travellerAge < 1 ||
-                            travellerAge > 120)
-                        {
-                            throw new Exception(
-                                "Please enter a valid age for Traveller "
-                                + i
-                                + ".");
-                        }
-
-
-                        // ==========================================
-                        // VALIDATE GENDER
-                        // ==========================================
-
-                        if (string.IsNullOrWhiteSpace(
-                            travellerGender))
-                        {
-                            throw new Exception(
-                                "Please select gender for Traveller "
-                                + i
-                                + ".");
-                        }
-
-
-                        // ==========================================
-                        // INSERT TRAVELLER
-                        // ==========================================
-
-                        string travellerQuery = @"
-                            INSERT INTO BookingTravellers
-                            (
-                                BookingId,
-                                TravellerName,
-                                Age,
-                                Gender
-                            )
-                            VALUES
-                            (
-                                @BookingId,
-                                @TravellerName,
-                                @Age,
-                                @Gender
-                            )";
-
-
-                        SqlCommand travellerCmd =
-                            new SqlCommand(
-                                travellerQuery,
-                                con,
-                                transaction);
-
-
-                        travellerCmd.Parameters.AddWithValue(
-                            "@BookingId",
-                            bookingId);
-
-
-                        travellerCmd.Parameters.AddWithValue(
-                            "@TravellerName",
-                            travellerName.Trim());
-
-
-                        travellerCmd.Parameters.AddWithValue(
-                            "@Age",
-                            travellerAge);
-
-
-                        travellerCmd.Parameters.AddWithValue(
-                            "@Gender",
-                            travellerGender);
-
-
-                        travellerCmd.ExecuteNonQuery();
-                    }
-
-
-                    // ==========================================
-                    // COMMIT TRANSACTION
-                    // ==========================================
+                    InsertTravellers(
+                        con,
+                        transaction,
+                        bookingId,
+                        numberOfPersons);
 
                     transaction.Commit();
 
-
-                    transactionCompleted = true;
+                    return true;
                 }
                 catch (Exception ex)
                 {
-                    // ==========================================
-                    // ROLLBACK TRANSACTION
-                    // ==========================================
-
-                    if (!transactionCompleted)
+                    try
                     {
-                        try
-                        {
-                            transaction.Rollback();
-                        }
-                        catch
-                        {
-                            // Ignore rollback error.
-                        }
+                        transaction.Rollback();
                     }
-
+                    catch
+                    {
+                        // Ignore rollback error.
+                    }
 
                     lblMessage.Text =
                         ex.Message;
 
-
-                    return;
+                    return false;
                 }
             }
+        }
 
+        private int InsertBooking(
+            SqlConnection con,
+            SqlTransaction transaction,
+            int userId,
+            int packageId,
+            DateTime travelDate,
+            int numberOfPersons,
+            decimal packageAmount,
+            decimal taxAmount,
+            decimal totalAmount)
+        {
+            string query = @"
+                INSERT INTO Bookings
+                (
+                    UserId,
+                    PackageId,
+                    BookingDate,
+                    TravelDate,
+                    NumberOfPersons,
+                    SpecialRequest,
+                    PackageAmount,
+                    TaxAmount,
+                    TotalAmount,
+                    BookingStatus,
+                    PaymentStatus
+                )
+                VALUES
+                (
+                    @UserId,
+                    @PackageId,
+                    @BookingDate,
+                    @TravelDate,
+                    @NumberOfPersons,
+                    @SpecialRequest,
+                    @PackageAmount,
+                    @TaxAmount,
+                    @TotalAmount,
+                    @BookingStatus,
+                    @PaymentStatus
+                );
 
-            // ==========================================
-            // SAVE BOOKING ID
-            // ==========================================
+                SELECT SCOPE_IDENTITY();";
 
-            Session["BookingId"] =
-                bookingId;
+            using (SqlCommand cmd =
+                   new SqlCommand(
+                       query,
+                       con,
+                       transaction))
+            {
+                cmd.Parameters.AddWithValue(
+                    "@UserId",
+                    userId);
 
+                cmd.Parameters.AddWithValue(
+                    "@PackageId",
+                    packageId);
 
-            // ==========================================
-            // REDIRECT AFTER TRANSACTION IS CLOSED
-            // ==========================================
+                cmd.Parameters.AddWithValue(
+                    "@BookingDate",
+                    DateTime.Now);
 
-            Response.Redirect(
-                "BookingSuccess.aspx?id="
-                + bookingId);
+                cmd.Parameters.AddWithValue(
+                    "@TravelDate",
+                    travelDate.Date);
+
+                cmd.Parameters.AddWithValue(
+                    "@NumberOfPersons",
+                    numberOfPersons);
+
+                cmd.Parameters.AddWithValue(
+                    "@SpecialRequest",
+                    txtSpecialRequest.Text.Trim());
+
+                cmd.Parameters.AddWithValue(
+                    "@PackageAmount",
+                    packageAmount);
+
+                cmd.Parameters.AddWithValue(
+                    "@TaxAmount",
+                    taxAmount);
+
+                cmd.Parameters.AddWithValue(
+                    "@TotalAmount",
+                    totalAmount);
+
+                cmd.Parameters.AddWithValue(
+                    "@BookingStatus",
+                    "Pending");
+
+                cmd.Parameters.AddWithValue(
+                    "@PaymentStatus",
+                    "Pending");
+
+                return Convert.ToInt32(
+                    cmd.ExecuteScalar());
+            }
+        }
+
+        private void InsertTravellers(
+            SqlConnection con,
+            SqlTransaction transaction,
+            int bookingId,
+            int numberOfPersons)
+        {
+            for (int i = 1;
+                 i <= numberOfPersons;
+                 i++)
+            {
+                string travellerName =
+                    Request.Form[
+                        "TravellerName_" + i];
+
+                string travellerAgeText =
+                    Request.Form[
+                        "TravellerAge_" + i];
+
+                string travellerGender =
+                    Request.Form[
+                        "TravellerGender_" + i];
+
+                if (string.IsNullOrWhiteSpace(
+                    travellerName))
+                {
+                    throw new Exception(
+                        "Please enter the name of Traveller "
+                        + i + ".");
+                }
+
+                int travellerAge;
+
+                if (!int.TryParse(
+                    travellerAgeText,
+                    out travellerAge))
+                {
+                    throw new Exception(
+                        "Please enter a valid age for Traveller "
+                        + i + ".");
+                }
+
+                if (travellerAge < 1 ||
+                    travellerAge > 120)
+                {
+                    throw new Exception(
+                        "Please enter a valid age for Traveller "
+                        + i + ".");
+                }
+
+                if (string.IsNullOrWhiteSpace(
+                    travellerGender))
+                {
+                    throw new Exception(
+                        "Please select gender for Traveller "
+                        + i + ".");
+                }
+
+                string query = @"
+                    INSERT INTO BookingTravellers
+                    (
+                        BookingId,
+                        TravellerName,
+                        Age,
+                        Gender
+                    )
+                    VALUES
+                    (
+                        @BookingId,
+                        @TravellerName,
+                        @Age,
+                        @Gender
+                    )";
+
+                using (SqlCommand cmd =
+                       new SqlCommand(
+                           query,
+                           con,
+                           transaction))
+                {
+                    cmd.Parameters.AddWithValue(
+                        "@BookingId",
+                        bookingId);
+
+                    cmd.Parameters.AddWithValue(
+                        "@TravellerName",
+                        travellerName.Trim());
+
+                    cmd.Parameters.AddWithValue(
+                        "@Age",
+                        travellerAge);
+
+                    cmd.Parameters.AddWithValue(
+                        "@Gender",
+                        travellerGender);
+
+                    cmd.ExecuteNonQuery();
+                }
+            }
         }
     }
 }

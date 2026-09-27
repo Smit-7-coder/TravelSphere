@@ -24,6 +24,24 @@ namespace TravelSphere.Traveller
         protected global::System.Web.UI.WebControls.TextBox txtDays;
 
         /// <summary>
+        /// rfvDays control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator rfvDays;
+
+        /// <summary>
+        /// rvDays control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RangeValidator rvDays;
+
+        /// <summary>
         /// txtPeople control.
         /// </summary>
         /// <remarks>
@@ -31,6 +49,24 @@ namespace TravelSphere.Traveller
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtPeople;
+
+        /// <summary>
+        /// rfvPeople control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator rfvPeople;
+
+        /// <summary>
+        /// rvPeople control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RangeValidator rvPeople;
 
         /// <summary>
         /// txtRooms control.
@@ -42,6 +78,24 @@ namespace TravelSphere.Traveller
         protected global::System.Web.UI.WebControls.TextBox txtRooms;
 
         /// <summary>
+        /// rfvRooms control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator rfvRooms;
+
+        /// <summary>
+        /// rvRooms control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RangeValidator rvRooms;
+
+        /// <summary>
         /// ddlTravelType control.
         /// </summary>
         /// <remarks>
@@ -49,6 +103,15 @@ namespace TravelSphere.Traveller
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.DropDownList ddlTravelType;
+
+        /// <summary>
+        /// rfvTravelType control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator rfvTravelType;
 
         /// <summary>
         /// ddlHotelType control.
@@ -60,6 +123,15 @@ namespace TravelSphere.Traveller
         protected global::System.Web.UI.WebControls.DropDownList ddlHotelType;
 
         /// <summary>
+        /// rfvHotelType control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator rfvHotelType;
+
+        /// <summary>
         /// txtMinDistance control.
         /// </summary>
         /// <remarks>
@@ -69,6 +141,24 @@ namespace TravelSphere.Traveller
         protected global::System.Web.UI.WebControls.TextBox txtMinDistance;
 
         /// <summary>
+        /// rfvMinDistance control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator rfvMinDistance;
+
+        /// <summary>
+        /// rvMinDistance control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RangeValidator rvMinDistance;
+
+        /// <summary>
         /// txtMaxDistance control.
         /// </summary>
         /// <remarks>
@@ -76,6 +166,33 @@ namespace TravelSphere.Traveller
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtMaxDistance;
+
+        /// <summary>
+        /// rfvMaxDistance control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator rfvMaxDistance;
+
+        /// <summary>
+        /// rvMaxDistance control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RangeValidator rvMaxDistance;
+
+        /// <summary>
+        /// cvDistance control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.CompareValidator cvDistance;
 
         /// <summary>
         /// chkPaidActivities control.

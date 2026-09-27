@@ -1,19 +1,32 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Configuration;
 using System.Data.SqlClient;
-using System.Linq;
-using System.Web;
 using System.Web.UI;
-using System.Web.UI.WebControls;
 
 namespace TravelSphere.Account
 {
-    public partial class Login : System.Web.UI.Page
+    public partial class Login : Page
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+            if (!IsPostBack)
+            {
+                ShowForgotPasswordMessage();
+            }
+        }
 
+        private void ShowForgotPasswordMessage()
+        {
+            if (Session["ForgotPasswordMessage"] != null)
+            {
+                lblMessage.Text =
+                    Session["ForgotPasswordMessage"].ToString();
+
+                lblMessage.CssClass =
+                    "message success";
+
+                Session.Remove("ForgotPasswordMessage");
+            }
         }
 
         protected void btnLogin_Click(object sender, EventArgs e)
@@ -24,50 +37,112 @@ namespace TravelSphere.Account
             }
 
             string connectionString =
-                ConfigurationManager.ConnectionStrings["TravelSphereDB"].ConnectionString;
+                ConfigurationManager
+                    .ConnectionStrings["TravelSphereDB"]
+                    .ConnectionString;
 
-            using (SqlConnection con = new SqlConnection(connectionString))
+            string query = @"
+                SELECT
+                    UserId,
+                    FullName,
+                    Email,
+                    Password,
+                    Role
+                FROM Users
+                WHERE Email = @Email";
+
+            using (SqlConnection con =
+                   new SqlConnection(connectionString))
             {
-                string query = @"SELECT UserId, FullName, Email, Role
-                                 FROM Users
-                                 WHERE Email = @Email AND Password = @Password";
-
-                SqlCommand cmd = new SqlCommand(query, con);
-
-                cmd.Parameters.AddWithValue("@Email", txtEmail.Text.Trim());
-                cmd.Parameters.AddWithValue("@Password", txtPassword.Text);
-
-                con.Open();
-
-                SqlDataReader reader = cmd.ExecuteReader();
-
-                if (reader.Read())
+                using (SqlCommand cmd =
+                       new SqlCommand(query, con))
                 {
-                    // Store logged-in user details in Session
-                    Session["UserId"] = reader["UserId"].ToString();
-                    Session["FullName"] = reader["FullName"].ToString();
-                    Session["Email"] = reader["Email"].ToString();
-                    Session["Role"] = reader["Role"].ToString();
+                    cmd.Parameters.AddWithValue(
+                        "@Email",
+                        txtEmail.Text.Trim());
 
-                    string role = reader["Role"].ToString();
+                    con.Open();
 
-                    reader.Close();
-
-                    // Role wise redirect
-                    if (role == "Admin")
+                    using (SqlDataReader reader =
+                           cmd.ExecuteReader())
                     {
-                        Response.Redirect("~/Admin/Dashboard.aspx");
+                        if (reader.Read())
+                        {
+                            string storedPassword =
+                                reader["Password"].ToString();
+
+                            bool passwordCorrect =
+                                BCrypt.Net.BCrypt.Verify(
+                                    txtPassword.Text,
+                                    storedPassword);
+
+                            if (passwordCorrect)
+                            {
+                                LoginUser(reader);
+                            }
+                            else
+                            {
+                                ShowError(
+                                    "Invalid Email or Password.");
+                            }
+                        }
+                        else
+                        {
+                            ShowError(
+                                "Invalid Email or Password.");
+                        }
                     }
-                    else if (role == "Traveller")
-                    {
-                        Response.Redirect("~/Traveller/Home.aspx");
-                    }
-                }
-                else
-                {
-                    lblMessage.Text = "Invalid Email or Password.";
                 }
             }
+        }
+
+        private void LoginUser(SqlDataReader reader)
+        {
+            string role =
+                reader["Role"].ToString();
+
+            UserAccount user;
+
+            if (role == "Admin")
+            {
+                user = new AdminAccount();
+            }
+            else if (role == "Traveller")
+            {
+                user = new TravellerAccount();
+            }
+            else
+            {
+                ShowError(
+                    "Your account role is not configured.");
+
+                return;
+            }
+
+            user.UserId =
+                reader["UserId"].ToString();
+
+            user.FullName =
+                reader["FullName"].ToString();
+
+            user.Email =
+                reader["Email"].ToString();
+
+            user.Role = role;
+
+            Session["UserId"] = user.UserId;
+            Session["FullName"] = user.FullName;
+            Session["Email"] = user.Email;
+            Session["Role"] = user.Role;
+
+            Response.Redirect(
+                user.GetHomePage());
+        }
+
+        private void ShowError(string message)
+        {
+            lblMessage.Text = message;
+            lblMessage.CssClass = "message";
         }
     }
 }

@@ -7,122 +7,169 @@ namespace TravelSphere.Traveller
 {
     public partial class PackageDetails : System.Web.UI.Page
     {
-        string connectionString =
-            ConfigurationManager.ConnectionStrings["TravelSphereDB"].ConnectionString;
+        private string connectionString =
+            ConfigurationManager
+                .ConnectionStrings["TravelSphereDB"]
+                .ConnectionString;
 
         protected void Page_Load(object sender, EventArgs e)
         {
             if (!IsPostBack)
             {
-                if (Request.QueryString["id"] != null)
-                {
-                    int packageId = Convert.ToInt32(Request.QueryString["id"]);
+                string id = Request.QueryString["id"];
 
-                    LoadPackage(packageId);
-
-                    LoadItinerary(packageId);
-                }
-                else
+                if (string.IsNullOrEmpty(id))
                 {
                     Response.Redirect("Home.aspx");
+                    return;
                 }
+
+                int packageId;
+
+                if (!int.TryParse(id, out packageId))
+                {
+                    Response.Redirect("Home.aspx");
+                    return;
+                }
+
+                LoadPackage(packageId);
+                LoadItinerary(packageId);
             }
         }
 
         private void LoadPackage(int packageId)
         {
-            using (SqlConnection con = new SqlConnection(connectionString))
-            {
-                string query = @"
+            string query = @"
                 SELECT
-                    P.*,
+                    P.PackageImage,
+                    P.PackageName,
+                    P.Description,
+                    P.DurationDays,
+                    P.AdultPrice,
+                    P.ChildPrice,
+                    P.TransportType,
+                    P.HotelName,
+                    P.RoomType,
+                    P.MealsIncluded,
+                    P.BestSeason,
                     D.DestinationName,
                     D.State
                 FROM Packages P
                 INNER JOIN Destinations D
                     ON P.DestinationId = D.DestinationId
-                WHERE P.PackageId=@PackageId";
+                WHERE P.PackageId = @PackageId";
 
-                SqlCommand cmd = new SqlCommand(query, con);
-
-                cmd.Parameters.AddWithValue("@PackageId", packageId);
-
-                con.Open();
-
-                SqlDataReader reader = cmd.ExecuteReader();
-
-                if (reader.Read())
+            using (SqlConnection con =
+                   new SqlConnection(connectionString))
+            {
+                using (SqlCommand cmd =
+                       new SqlCommand(query, con))
                 {
-                    imgPackage.ImageUrl =
-                        "~/Assets/images/" + reader["PackageImage"].ToString();
+                    cmd.Parameters.AddWithValue(
+                        "@PackageId",
+                        packageId);
 
-                    lblPackageName.Text = reader["PackageName"].ToString();
+                    con.Open();
 
-                    lblDestination.Text =
-                        reader["DestinationName"] + ", " +
-                        reader["State"];
+                    using (SqlDataReader reader =
+                           cmd.ExecuteReader())
+                    {
+                        if (reader.Read())
+                        {
+                            imgPackage.ImageUrl =
+                                "~/Assets/images/" +
+                                reader["PackageImage"].ToString();
 
-                    lblDescription.Text = reader["Description"].ToString();
+                            lblPackageName.Text =
+                                reader["PackageName"].ToString();
 
-                    lblDuration.Text =
-                        reader["DurationDays"] + " Days";
+                            lblDestination.Text =
+                                reader["DestinationName"].ToString()
+                                + ", " +
+                                reader["State"].ToString();
 
-                    lblAdultPrice.Text =
-                        Convert.ToDecimal(reader["AdultPrice"]).ToString("N0");
+                            lblDescription.Text =
+                                reader["Description"].ToString();
 
-                    lblChildPrice.Text =
-                        Convert.ToDecimal(reader["ChildPrice"]).ToString("N0");
+                            lblDuration.Text =
+                                reader["DurationDays"].ToString()
+                                + " Days";
 
-                    lblTransport.Text =
-                        reader["TransportType"].ToString();
+                            lblAdultPrice.Text =
+                                Convert.ToDecimal(
+                                    reader["AdultPrice"]
+                                ).ToString("N0");
 
-                    lblHotel.Text =
-                        reader["HotelName"].ToString();
+                            lblChildPrice.Text =
+                                Convert.ToDecimal(
+                                    reader["ChildPrice"]
+                                ).ToString("N0");
 
-                    lblRoomType.Text =
-                        reader["RoomType"].ToString();
+                            lblTransport.Text =
+                                reader["TransportType"].ToString();
 
-                    lblMeals.Text =
-                        reader["MealsIncluded"].ToString();
+                            lblHotel.Text =
+                                reader["HotelName"].ToString();
 
-                    lblSeason.Text =
-                        reader["BestSeason"].ToString();
+                            lblRoomType.Text =
+                                reader["RoomType"].ToString();
+
+                            lblMeals.Text =
+                                reader["MealsIncluded"].ToString();
+
+                            lblSeason.Text =
+                                reader["BestSeason"].ToString();
+                        }
+                    }
                 }
-
-                reader.Close();
             }
         }
 
         private void LoadItinerary(int packageId)
         {
-            using (SqlConnection con = new SqlConnection(connectionString))
-            {
-                string query = @"
-                SELECT *
+            string query = @"
+                SELECT
+                    ItineraryId,
+                    PackageId,
+                    DayNumber,
+                    Title,
+                    Description
                 FROM PackageItinerary
-                WHERE PackageId=@PackageId
+                WHERE PackageId = @PackageId
                 ORDER BY DayNumber";
 
-                SqlCommand cmd = new SqlCommand(query, con);
+            DataTable itinerary =
+                new DataTable();
 
-                cmd.Parameters.AddWithValue("@PackageId", packageId);
+            using (SqlConnection con =
+                   new SqlConnection(connectionString))
+            {
+                using (SqlCommand cmd =
+                       new SqlCommand(query, con))
+                {
+                    cmd.Parameters.AddWithValue(
+                        "@PackageId",
+                        packageId);
 
-                SqlDataAdapter da = new SqlDataAdapter(cmd);
-
-                DataTable dt = new DataTable();
-
-                da.Fill(dt);
-
-                rptItinerary.DataSource = dt;
-
-                rptItinerary.DataBind();
+                    using (SqlDataAdapter adapter =
+                           new SqlDataAdapter(cmd))
+                    {
+                        adapter.Fill(itinerary);
+                    }
+                }
             }
+
+            rptItinerary.DataSource = itinerary;
+            rptItinerary.DataBind();
         }
 
-        protected void btnBookNow_Click(object sender, EventArgs e)
+        protected void btnBookNow_Click(
+            object sender,
+            EventArgs e)
         {
             Response.Redirect(
-                "Booking.aspx?id=" + Request.QueryString["id"]);
+                "Booking.aspx?id=" +
+                Request.QueryString["id"]);
         }
     }
 }

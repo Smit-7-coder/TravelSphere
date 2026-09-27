@@ -39,7 +39,7 @@
 .package-summary-image {
     width: 250px;
     height: 180px;
-    object-fit: cover;
+    object-fit: fill;
 }
 
 

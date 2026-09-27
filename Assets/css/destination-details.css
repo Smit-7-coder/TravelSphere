@@ -15,7 +15,7 @@
 .destination-img {
     width: 100%;
     height: 100%;
-    object-fit: cover;
+    object-fit: fill;
 }
 
 .destination-details {
@@ -63,7 +63,7 @@
     .package-card img {
         width: 280px;
         height: 180px;
-        object-fit: cover;
+        object-fit: fill;
     }
 
 .package-info {

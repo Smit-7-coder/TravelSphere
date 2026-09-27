@@ -7,99 +7,123 @@ namespace TravelSphere.Traveller
 {
     public partial class DestinationDetails : System.Web.UI.Page
     {
-        string connectionString =
-            ConfigurationManager.ConnectionStrings["TravelSphereDB"].ConnectionString;
+        private string connectionString =
+            ConfigurationManager
+                .ConnectionStrings["TravelSphereDB"]
+                .ConnectionString;
 
         protected void Page_Load(object sender, EventArgs e)
         {
             if (!IsPostBack)
             {
-                // Check DestinationId in URL
-                if (Request.QueryString["id"] != null)
-                {
-                    int destinationId = Convert.ToInt32(Request.QueryString["id"]);
+                string id = Request.QueryString["id"];
 
-                    LoadDestination(destinationId);
-
-                    LoadPackages(destinationId);
-                }
-                else
+                if (string.IsNullOrEmpty(id))
                 {
                     Response.Redirect("Home.aspx");
+                    return;
                 }
+
+                int destinationId;
+
+                if (!int.TryParse(id, out destinationId))
+                {
+                    Response.Redirect("Home.aspx");
+                    return;
+                }
+
+                LoadDestination(destinationId);
+                LoadPackages(destinationId);
             }
         }
-
-
-        // ==========================================
-        // LOAD DESTINATION DETAILS
-        // ==========================================
 
         private void LoadDestination(int destinationId)
         {
-            using (SqlConnection con = new SqlConnection(connectionString))
+            string query = @"
+                SELECT
+                    DestinationName,
+                    State,
+                    DestinationType,
+                    Description,
+                    Image
+                FROM Destinations
+                WHERE DestinationId = @DestinationId";
+
+            using (SqlConnection con =
+                   new SqlConnection(connectionString))
             {
-                string query = @"
-                    SELECT *
-                    FROM Destinations
-                    WHERE DestinationId=@DestinationId";
-
-                SqlCommand cmd = new SqlCommand(query, con);
-
-                cmd.Parameters.AddWithValue("@DestinationId", destinationId);
-
-                con.Open();
-
-                SqlDataReader reader = cmd.ExecuteReader();
-
-                if (reader.Read())
+                using (SqlCommand cmd =
+                       new SqlCommand(query, con))
                 {
-                    lblDestinationName.Text = reader["DestinationName"].ToString();
+                    cmd.Parameters.AddWithValue(
+                        "@DestinationId",
+                        destinationId);
 
-                    lblState.Text = reader["State"].ToString();
+                    con.Open();
 
-                    lblType.Text = reader["DestinationType"].ToString();
+                    using (SqlDataReader reader =
+                           cmd.ExecuteReader())
+                    {
+                        if (reader.Read())
+                        {
+                            lblDestinationName.Text =
+                                reader["DestinationName"].ToString();
 
-                    lblDescription.Text = reader["Description"].ToString();
+                            lblState.Text =
+                                reader["State"].ToString();
 
-                    imgDestination.ImageUrl =
-                        "~/Assets/images/" + reader["Image"].ToString();
+                            lblType.Text =
+                                reader["DestinationType"].ToString();
+
+                            lblDescription.Text =
+                                reader["Description"].ToString();
+
+                            imgDestination.ImageUrl =
+                                "~/Assets/images/" +
+                                reader["Image"].ToString();
+                        }
+                    }
                 }
-
-                reader.Close();
             }
         }
 
-
-
-        // ==========================================
-        // LOAD PACKAGES
-        // ==========================================
-
         private void LoadPackages(int destinationId)
         {
-            using (SqlConnection con = new SqlConnection(connectionString))
+            string query = @"
+                SELECT
+                    PackageId,
+                    PackageName,
+                    Description,
+                    DurationDays,
+                    AdultPrice,
+                    PackageImage
+                FROM Packages
+                WHERE DestinationId = @DestinationId
+                AND IsActive = 1";
+
+            DataTable packages =
+                new DataTable();
+
+            using (SqlConnection con =
+                   new SqlConnection(connectionString))
             {
-                string query = @"
-                    SELECT *
-                    FROM Packages
-                    WHERE DestinationId=@DestinationId
-                    AND IsActive=1";
+                using (SqlCommand cmd =
+                       new SqlCommand(query, con))
+                {
+                    cmd.Parameters.AddWithValue(
+                        "@DestinationId",
+                        destinationId);
 
-                SqlCommand cmd = new SqlCommand(query, con);
-
-                cmd.Parameters.AddWithValue("@DestinationId", destinationId);
-
-                SqlDataAdapter da = new SqlDataAdapter(cmd);
-
-                DataTable dt = new DataTable();
-
-                da.Fill(dt);
-
-                rptPackages.DataSource = dt;
-
-                rptPackages.DataBind();
+                    using (SqlDataAdapter adapter =
+                           new SqlDataAdapter(cmd))
+                    {
+                        adapter.Fill(packages);
+                    }
+                }
             }
+
+            rptPackages.DataSource = packages;
+            rptPackages.DataBind();
         }
     }
 }

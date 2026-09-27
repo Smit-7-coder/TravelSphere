@@ -4,7 +4,6 @@
     CodeBehind="Profile.aspx.cs"
     Inherits="TravelSphere.Traveller.Profile" %>
 
-
 <asp:Content ID="Content1"
     ContentPlaceHolderID="head"
     runat="server">

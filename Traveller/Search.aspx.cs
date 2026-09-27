@@ -10,6 +10,8 @@ namespace TravelSphere.Traveller
         string connectionString =
             ConfigurationManager.ConnectionStrings["TravelSphereDB"].ConnectionString;
 
+        // Delegate for a search operation
+        private delegate void SearchMethod(string searchText);
 
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -19,11 +21,6 @@ namespace TravelSphere.Traveller
             }
         }
 
-
-        // ==========================================
-        // SEARCH BUTTON
-        // ==========================================
-
         protected void btnSearch_Click(object sender, EventArgs e)
         {
             string searchText = txtSearch.Text.Trim();
@@ -31,170 +28,126 @@ namespace TravelSphere.Traveller
             if (string.IsNullOrEmpty(searchText))
             {
                 LoadAllResults();
-
                 lblMessage.Text = "";
-
                 return;
             }
 
+            SearchMethod searchDestination = SearchDestinations;
+            SearchMethod searchPackage = SearchPackages;
 
-            SearchDestinations(searchText);
-
-            SearchPackages(searchText);
+            searchDestination(searchText);
+            searchPackage(searchText);
         }
-
-
-        // ==========================================
-        // LOAD ALL RESULTS
-        // ==========================================
 
         private void LoadAllResults()
         {
             LoadDestinations("");
-
             LoadPackages("");
         }
 
-
-        // ==========================================
-        // SEARCH DESTINATIONS
-        // ==========================================
-
         private void SearchDestinations(string searchText)
         {
-            using (SqlConnection con =
-                   new SqlConnection(connectionString))
+            string query = @"
+                SELECT
+                    DestinationId,
+                    DestinationName,
+                    State,
+                    Description,
+                    Image
+                FROM Destinations
+                WHERE IsActive = 1
+                AND
+                (
+                    DestinationName LIKE @Search
+                    OR State LIKE @Search
+                    OR Description LIKE @Search
+                )
+                ORDER BY DestinationName";
+
+            using (SqlConnection con = new SqlConnection(connectionString))
             {
-                string query = @"
-                    SELECT
-                        DestinationId,
-                        DestinationName,
-                        State,
-                        Description,
-                        Image
-                    FROM Destinations
-                    WHERE IsActive = 1
-                    AND
-                    (
-                        DestinationName LIKE @Search
-                        OR State LIKE @Search
-                        OR Description LIKE @Search
-                    )
-                    ORDER BY DestinationName";
-
-
-                SqlCommand cmd =
-                    new SqlCommand(query, con);
-
-
-                cmd.Parameters.AddWithValue(
-                    "@Search",
-                    "%" + searchText + "%"
-                );
-
-
-                SqlDataAdapter da =
-                    new SqlDataAdapter(cmd);
-
-
-                DataTable dt =
-                    new DataTable();
-
-
-                da.Fill(dt);
-
-
-                rptDestinations.DataSource = dt;
-
-                rptDestinations.DataBind();
-
-
-                if (dt.Rows.Count == 0)
+                using (SqlCommand cmd = new SqlCommand(query, con))
                 {
-                    lblMessage.Text =
-                        "No destinations found.";
+                    cmd.Parameters.AddWithValue(
+                        "@Search",
+                        "%" + searchText + "%"
+                    );
+
+                    using (SqlDataAdapter da = new SqlDataAdapter(cmd))
+                    {
+                        DataTable dt = new DataTable();
+
+                        da.Fill(dt);
+
+                        rptDestinations.DataSource = dt;
+                        rptDestinations.DataBind();
+
+                        if (dt.Rows.Count == 0)
+                        {
+                            lblMessage.Text = "No destinations found.";
+                        }
+                    }
                 }
             }
         }
 
-
-        // ==========================================
-        // SEARCH PACKAGES
-        // ==========================================
-
         private void SearchPackages(string searchText)
         {
-            using (SqlConnection con =
-                   new SqlConnection(connectionString))
+            string query = @"
+                SELECT
+                    P.PackageId,
+                    P.PackageName,
+                    P.Description,
+                    P.DurationDays,
+                    P.AdultPrice,
+                    P.PackageImage,
+
+                    D.DestinationName,
+                    D.State
+
+                FROM Packages P
+
+                INNER JOIN Destinations D
+                    ON P.DestinationId = D.DestinationId
+
+                WHERE P.IsActive = 1
+
+                AND
+                (
+                    P.PackageName LIKE @Search
+                    OR P.Description LIKE @Search
+                    OR D.DestinationName LIKE @Search
+                    OR D.State LIKE @Search
+                )
+
+                ORDER BY P.PackageName";
+
+            using (SqlConnection con = new SqlConnection(connectionString))
             {
-                string query = @"
-                    SELECT
-                        P.PackageId,
-                        P.PackageName,
-                        P.Description,
-                        P.DurationDays,
-                        P.AdultPrice,
-                        P.PackageImage,
+                using (SqlCommand cmd = new SqlCommand(query, con))
+                {
+                    cmd.Parameters.AddWithValue(
+                        "@Search",
+                        "%" + searchText + "%"
+                    );
 
-                        D.DestinationName,
-                        D.State
+                    using (SqlDataAdapter da = new SqlDataAdapter(cmd))
+                    {
+                        DataTable dt = new DataTable();
 
-                    FROM Packages P
+                        da.Fill(dt);
 
-                    INNER JOIN Destinations D
-                        ON P.DestinationId =
-                           D.DestinationId
-
-                    WHERE P.IsActive = 1
-
-                    AND
-                    (
-                        P.PackageName LIKE @Search
-                        OR P.Description LIKE @Search
-                        OR D.DestinationName LIKE @Search
-                        OR D.State LIKE @Search
-                    )
-
-                    ORDER BY P.PackageName";
-
-
-                SqlCommand cmd =
-                    new SqlCommand(query, con);
-
-
-                cmd.Parameters.AddWithValue(
-                    "@Search",
-                    "%" + searchText + "%"
-                );
-
-
-                SqlDataAdapter da =
-                    new SqlDataAdapter(cmd);
-
-
-                DataTable dt =
-                    new DataTable();
-
-
-                da.Fill(dt);
-
-
-                rptPackages.DataSource = dt;
-
-                rptPackages.DataBind();
+                        rptPackages.DataSource = dt;
+                        rptPackages.DataBind();
+                    }
+                }
             }
         }
-
-
-        // ==========================================
-        // HELPER METHODS
-        // ==========================================
 
         private void LoadDestinations(string searchText)
         {
             SearchDestinations(searchText);
         }
-
 
         private void LoadPackages(string searchText)
         {

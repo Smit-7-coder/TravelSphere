@@ -69,6 +69,15 @@ namespace TravelSphere.Traveller
         protected global::System.Web.UI.WebControls.Label lblChildPrice;
 
         /// <summary>
+        /// vsBooking control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.ValidationSummary vsBooking;
+
+        /// <summary>
         /// txtFullName control.
         /// </summary>
         /// <remarks>
@@ -105,6 +114,15 @@ namespace TravelSphere.Traveller
         protected global::System.Web.UI.WebControls.RequiredFieldValidator rfvEmail;
 
         /// <summary>
+        /// revEmail control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RegularExpressionValidator revEmail;
+
+        /// <summary>
         /// txtPhone control.
         /// </summary>
         /// <remarks>
@@ -121,6 +139,15 @@ namespace TravelSphere.Traveller
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.RequiredFieldValidator rfvPhone;
+
+        /// <summary>
+        /// revPhone control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RegularExpressionValidator revPhone;
 
         /// <summary>
         /// txtTravelDate control.
@@ -150,6 +177,24 @@ namespace TravelSphere.Traveller
         protected global::System.Web.UI.WebControls.TextBox txtAdults;
 
         /// <summary>
+        /// rfvAdults control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator rfvAdults;
+
+        /// <summary>
+        /// rvAdults control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RangeValidator rvAdults;
+
+        /// <summary>
         /// txtChildren control.
         /// </summary>
         /// <remarks>
@@ -157,6 +202,24 @@ namespace TravelSphere.Traveller
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtChildren;
+
+        /// <summary>
+        /// rfvChildren control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator rfvChildren;
+
+        /// <summary>
+        /// rvChildren control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RangeValidator rvChildren;
 
         /// <summary>
         /// txtSpecialRequest control.

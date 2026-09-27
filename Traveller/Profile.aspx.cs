@@ -233,6 +233,22 @@ namespace TravelSphere.Traveller
 
                     lblAccountEmail.Text =
                         email;
+
+
+
+                    // ==========================================
+                    // MOBILE / PHONE NUMBER
+                    // ==========================================
+
+                    string phone =
+                        reader[
+                            "Phone"
+                        ].ToString();
+
+
+
+                    txtPhone.Text =
+                        phone;
                 }
                 else
                 {

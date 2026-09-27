@@ -19,7 +19,7 @@
     ContentPlaceHolderID="MainContent"
     runat="server">
 
-
+        
     <!-- ==========================================
          BOOKING CONTAINER
     =========================================== -->
@@ -153,6 +153,19 @@
 
 
                 <!-- ==========================================
+                     VALIDATION SUMMARY
+                =========================================== -->
+
+                <asp:ValidationSummary
+                    ID="vsBooking"
+                    runat="server"
+                    HeaderText="Please correct the following errors:"
+                    ForeColor="Red"
+                    DisplayMode="BulletList"
+                    ValidationGroup="BookingValidation" />
+
+
+                <!-- ==========================================
                      FULL NAME
                 =========================================== -->
 
@@ -177,7 +190,8 @@
                         ControlToValidate="txtFullName"
                         ErrorMessage="Full Name is required."
                         ForeColor="Red"
-                        Display="Dynamic">
+                        Display="Dynamic"
+                        ValidationGroup="BookingValidation">
                     </asp:RequiredFieldValidator>
 
 
@@ -210,8 +224,21 @@
                         ControlToValidate="txtEmail"
                         ErrorMessage="Email is required."
                         ForeColor="Red"
-                        Display="Dynamic">
+                        Display="Dynamic"
+                        ValidationGroup="BookingValidation">
                     </asp:RequiredFieldValidator>
+
+
+                    <asp:RegularExpressionValidator
+                        ID="revEmail"
+                        runat="server"
+                        ControlToValidate="txtEmail"
+                        ValidationExpression="^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$"
+                        ErrorMessage="Please enter a valid email address."
+                        ForeColor="Red"
+                        Display="Dynamic"
+                        ValidationGroup="BookingValidation">
+                    </asp:RegularExpressionValidator>
 
 
                 </div>
@@ -243,8 +270,21 @@
                         ControlToValidate="txtPhone"
                         ErrorMessage="Phone number is required."
                         ForeColor="Red"
-                        Display="Dynamic">
+                        Display="Dynamic"
+                        ValidationGroup="BookingValidation">
                     </asp:RequiredFieldValidator>
+
+
+                    <asp:RegularExpressionValidator
+                        ID="revPhone"
+                        runat="server"
+                        ControlToValidate="txtPhone"
+                        ValidationExpression="^[0-9]{10}$"
+                        ErrorMessage="Phone number must contain exactly 10 digits."
+                        ForeColor="Red"
+                        Display="Dynamic"
+                        ValidationGroup="BookingValidation">
+                    </asp:RegularExpressionValidator>
 
 
                 </div>
@@ -276,7 +316,8 @@
                         ControlToValidate="txtTravelDate"
                         ErrorMessage="Travel date is required."
                         ForeColor="Red"
-                        Display="Dynamic">
+                        Display="Dynamic"
+                        ValidationGroup="BookingValidation">
                     </asp:RequiredFieldValidator>
 
 
@@ -306,6 +347,31 @@
                     </asp:TextBox>
 
 
+                    <asp:RequiredFieldValidator
+                        ID="rfvAdults"
+                        runat="server"
+                        ControlToValidate="txtAdults"
+                        ErrorMessage="Number of adults is required."
+                        ForeColor="Red"
+                        Display="Dynamic"
+                        ValidationGroup="BookingValidation">
+                    </asp:RequiredFieldValidator>
+
+
+                    <asp:RangeValidator
+                        ID="rvAdults"
+                        runat="server"
+                        ControlToValidate="txtAdults"
+                        MinimumValue="1"
+                        MaximumValue="100"
+                        Type="Integer"
+                        ErrorMessage="Number of adults must be between 1 and 100."
+                        ForeColor="Red"
+                        Display="Dynamic"
+                        ValidationGroup="BookingValidation">
+                    </asp:RangeValidator>
+
+
                 </div>
 
 
@@ -330,6 +396,31 @@
                         min="0"
                         oninput="calculateBookingTotal(); generateTravellerFields();">
                     </asp:TextBox>
+
+
+                    <asp:RequiredFieldValidator
+                        ID="rfvChildren"
+                        runat="server"
+                        ControlToValidate="txtChildren"
+                        ErrorMessage="Number of children is required."
+                        ForeColor="Red"
+                        Display="Dynamic"
+                        ValidationGroup="BookingValidation">
+                    </asp:RequiredFieldValidator>
+
+
+                    <asp:RangeValidator
+                        ID="rvChildren"
+                        runat="server"
+                        ControlToValidate="txtChildren"
+                        MinimumValue="0"
+                        MaximumValue="100"
+                        Type="Integer"
+                        ErrorMessage="Number of children must be between 0 and 100."
+                        ForeColor="Red"
+                        Display="Dynamic"
+                        ValidationGroup="BookingValidation">
+                    </asp:RangeValidator>
 
 
                 </div>
@@ -392,7 +483,9 @@
                     runat="server"
                     Text="Confirm Booking"
                     CssClass="confirm-button"
-                    OnClick="btnConfirmBooking_Click" />
+                    OnClick="btnConfirmBooking_Click"
+                    CausesValidation="true"
+                    ValidationGroup="BookingValidation" />
 
 
                 <asp:Label

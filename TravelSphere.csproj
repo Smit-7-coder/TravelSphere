@@ -134,6 +134,7 @@
     <Content Include="Account\ForgotPassword.aspx" />
     <Content Include="Account\Login.aspx" />
     <Content Include="Account\Register.aspx" />
+    <Content Include="Account\ResetPassword.aspx" />
     <Content Include="Assets\css\about-us.css" />
     <Content Include="Assets\css\booking-details.css" />
     <Content Include="Assets\css\booking-success.css" />
@@ -264,6 +265,14 @@
     <Compile Include="Account\Register.aspx.designer.cs">
       <DependentUpon>Register.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Account\ResetPassword.aspx.cs">
+      <DependentUpon>ResetPassword.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Account\ResetPassword.aspx.designer.cs">
+      <DependentUpon>ResetPassword.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="AdminAccount.cs" />
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="About.aspx.cs">
       <DependentUpon>About.aspx</DependentUpon>
@@ -305,6 +314,7 @@
     <Compile Include="Site.Mobile.Master.designer.cs">
       <DependentUpon>Site.Mobile.Master</DependentUpon>
     </Compile>
+    <Compile Include="TravellerAccount.cs" />
     <Compile Include="Traveller\AboutUs.aspx.cs">
       <DependentUpon>AboutUs.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -389,6 +399,7 @@
     <Compile Include="Traveller\Traveller.Master.designer.cs">
       <DependentUpon>Traveller.Master</DependentUpon>
     </Compile>
+    <Compile Include="UserAccount.cs" />
     <Compile Include="ViewSwitcher.ascx.cs">
       <DependentUpon>ViewSwitcher.ascx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
