@@ -1,0 +1,469 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true"
+    CodeBehind="Admin.master.cs"
+    Inherits="TravelSphere.Admin.Admin" %>
+
+<!DOCTYPE html>
+
+<html>
+<head runat="server">
+
+    <title>TravelSphere Admin</title>
+
+    <style>
+
+        /* ===============================
+           RESET
+        =============================== */
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, Helvetica, sans-serif;
+        }
+
+
+        /* ===============================
+           BODY
+        =============================== */
+
+        body {
+            background-color: #eeeeee;
+        }
+
+
+        /* ===============================
+           ADMIN CONTAINER
+        =============================== */
+
+        .admin-container {
+            display: flex;
+            min-height: 100vh;
+        }
+
+
+        /* ===============================
+           SIDEBAR
+        =============================== */
+
+        .sidebar {
+            width: 185px;
+            min-height: 100vh;
+
+            background-color: #124d3c;
+            color: white;
+
+            position: fixed;
+
+            left: 0;
+            top: 0;
+            bottom: 0;
+
+            display: flex;
+            flex-direction: column;
+        }
+
+
+        /* ===============================
+           LOGO SECTION
+        =============================== */
+
+        .logo-section {
+            padding: 20px 18px 15px;
+        }
+
+
+        .logo-section h2 {
+            font-size: 18px;
+            text-align: center;
+            margin-bottom: 12px;
+        }
+
+
+        .logo-section p {
+            font-size: 10px;
+            line-height: 1.5;
+            color: #d9e6e1;
+        }
+
+
+        /* ===============================
+           SIDEBAR LINE
+        =============================== */
+
+        .sidebar-line {
+            height: 1px;
+
+            background-color: rgba(255, 255, 255, 0.4);
+
+            margin: 5px 15px 15px;
+        }
+
+
+        /* ===============================
+           MENU
+        =============================== */
+
+        .menu {
+            display: flex;
+            flex-direction: column;
+            gap: 5px;
+        }
+
+
+        /* ===============================
+           MENU ITEM
+        =============================== */
+
+        .menu-item {
+            height: 42px;
+
+            display: flex;
+            align-items: center;
+
+            padding: 0 20px;
+
+            color: white;
+            text-decoration: none;
+
+            font-size: 12px;
+
+            border-radius: 8px;
+
+            margin-right: 2px;
+
+            transition: background-color 0.2s ease;
+        }
+
+
+        /* ===============================
+           MENU HOVER + ACTIVE
+        =============================== */
+
+        .menu-item:hover,
+        .menu-item.active {
+            background-color: #2f9469;
+        }
+
+
+        /* ===============================
+           MENU ICON
+        =============================== */
+
+        .menu-icon {
+            width: 28px;
+
+            font-size: 19px;
+
+            margin-right: 7px;
+
+            text-align: center;
+        }
+
+
+        /* ===============================
+           LOGOUT SECTION
+        =============================== */
+
+        .logout-section {
+            margin-top: auto;
+            padding: 15px;
+        }
+
+
+        .logout-line {
+            height: 1px;
+
+            background-color: rgba(255, 255, 255, 0.4);
+
+            margin-bottom: 18px;
+        }
+
+
+        /* ===============================
+           LOGOUT
+        =============================== */
+
+        .logout {
+            display: flex;
+            align-items: center;
+
+            color: white;
+            text-decoration: none;
+
+            font-size: 11px;
+
+            padding-left: 18px;
+        }
+
+
+        .logout-icon {
+            font-size: 22px;
+            margin-right: 12px;
+        }
+
+
+        /* ===============================
+           MAIN CONTENT
+        =============================== */
+
+        .main-content {
+            margin-left: 185px;
+
+            width: calc(100% - 185px);
+
+            min-height: 100vh;
+        }
+
+
+        /* ===============================
+           RESPONSIVE
+        =============================== */
+
+        @media screen and (max-width: 800px) {
+
+            .sidebar {
+                width: 150px;
+            }
+
+
+            .main-content {
+                margin-left: 150px;
+
+                width: calc(100% - 150px);
+            }
+
+
+            .menu-item {
+                padding: 0 12px;
+            }
+
+
+            .logo-section {
+                padding-left: 10px;
+                padding-right: 10px;
+            }
+
+        }
+
+    </style>
+
+
+    <!-- Page-specific CSS -->
+    <asp:ContentPlaceHolder
+        ID="head"
+        runat="server">
+    </asp:ContentPlaceHolder>
+
+</head>
+
+
+<body>
+
+<form id="form1" runat="server">
+
+    <div class="admin-container">
+
+
+        <!-- =================================
+             SIDEBAR
+        ================================= -->
+
+        <aside class="sidebar">
+
+
+            <!-- Logo -->
+            <div class="logo-section">
+
+                <h2>TravelSphere</h2>
+
+                <p>
+                    Your best companion to travel
+                    around the world
+                </p>
+
+            </div>
+
+
+            <!-- Line -->
+            <div class="sidebar-line"></div>
+
+
+            <!-- =================================
+                 MENU
+            ================================= -->
+
+            <nav class="menu">
+
+
+                <!-- Dashboard -->
+
+                <a href="AdminDeshboard.aspx"
+                   class="menu-item">
+
+                    <span class="menu-icon">
+                        ⌂
+                    </span>
+
+                    <span>
+                        Dashboard
+                    </span>
+
+                </a>
+
+
+                <!-- Packages -->
+
+                <a href="ManagePackages.aspx"
+                   class="menu-item">
+
+                    <span class="menu-icon">
+                        ⌕
+                    </span>
+
+                    <span>
+                        Packages
+                    </span>
+
+                </a>
+
+
+                <!-- Bookings -->
+
+                <a href="ManageBookings.aspx"
+                   class="menu-item">
+
+                    <span class="menu-icon">
+                        ▣
+                    </span>
+
+                    <span>
+                        Bookings
+                    </span>
+
+                </a>
+
+
+                <!-- About Us -->
+
+                <a href="AboutUs.aspx"
+                   class="menu-item">
+
+                    <span class="menu-icon">
+                        ⓘ
+                    </span>
+
+                    <span>
+                        About Us
+                    </span>
+
+                </a>
+
+
+            </nav>
+
+
+            <!-- =================================
+                 LOGOUT
+            ================================= -->
+
+            <div class="logout-section">
+
+                <div class="logout-line"></div>
+
+
+                <a href="#"
+                   class="logout">
+
+                    <span class="logout-icon">
+                        ◯
+                    </span>
+
+                    <span>
+                        Log Out
+                    </span>
+
+                </a>
+
+            </div>
+
+
+        </aside>
+
+
+        <!-- =================================
+             MAIN CONTENT
+        ================================= -->
+
+        <main class="main-content">
+
+            <asp:ContentPlaceHolder
+                ID="MainContent"
+                runat="server">
+            </asp:ContentPlaceHolder>
+
+        </main>
+
+
+    </div>
+
+
+</form>
+
+
+<!-- =================================
+     ACTIVE SIDEBAR SCRIPT
+================================= -->
+
+<script>
+
+    document.addEventListener("DOMContentLoaded", function () {
+
+        // Get current page name
+        var currentPage = window.location.pathname
+            .split("/")
+            .pop()
+            .toLowerCase();
+
+
+        // Get all sidebar menu items
+        var menuItems = document.querySelectorAll(".menu-item");
+
+
+        // Check every menu item
+        menuItems.forEach(function (item) {
+
+            var link = item.getAttribute("href");
+
+            if (!link) {
+                return;
+            }
+
+
+            var linkPage = link
+                .split("/")
+                .pop()
+                .toLowerCase();
+
+
+            // Remove active class first
+            item.classList.remove("active");
+
+
+            // Add active class to current page
+            if (linkPage === currentPage) {
+
+                item.classList.add("active");
+
+            }
+
+        });
+
+    });
+
+</script>
+
+
+</body>
+
+</html>

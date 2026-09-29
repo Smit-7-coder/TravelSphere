@@ -1,0 +1,295 @@
+﻿/* =========================================
+   Manage Packages Page
+========================================= */
+
+.packages-page {
+    width: 100%;
+    padding: 18px 38px 40px;
+    box-sizing: border-box;
+}
+
+
+/* =========================================
+   Page Header
+========================================= */
+
+.packages-header {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 28px;
+}
+
+    .packages-header h1 {
+        margin: 0;
+        font-size: 32px;
+        font-weight: 500;
+        color: #111111;
+    }
+
+
+/* =========================================
+   Add Package Button
+========================================= */
+
+.add-package-button {
+    border: none;
+    background-color: #4f9f78;
+    color: #ffffff;
+    font-family: inherit;
+    font-size: 18px;
+    font-weight: 500;
+    padding: 10px 22px;
+    border-radius: 14px;
+    cursor: pointer;
+    transition: background-color 0.2s ease, transform 0.2s ease;
+}
+
+    .add-package-button:hover {
+        background-color: #438d69;
+        transform: translateY(-1px);
+    }
+
+
+/* =========================================
+   Table Container
+========================================= */
+
+.packages-container {
+    width: 100%;
+    background-color: #d9d9d9;
+    border-radius: 20px;
+    padding: 30px 20px 20px;
+    box-sizing: border-box;
+    overflow-x: auto;
+}
+
+
+/* =========================================
+   Table
+========================================= */
+
+.packages-table {
+    width: 100%;
+    border-collapse: collapse;
+    table-layout: fixed;
+    color: #111111;
+}
+
+
+    /* =========================================
+   Table Header
+========================================= */
+
+    .packages-table th {
+        text-align: left;
+        font-size: 22px;
+        font-weight: 500;
+        padding: 14px 0 10px;
+        border-bottom: 1px solid #777777;
+    }
+
+
+        /* =========================================
+   Column Widths
+========================================= */
+
+        .packages-table th:nth-child(1) {
+            width: 28%;
+        }
+
+        .packages-table th:nth-child(2) {
+            width: 22%;
+        }
+
+        .packages-table th:nth-child(3) {
+            width: 16%;
+        }
+
+        .packages-table th:nth-child(4) {
+            width: 16%;
+        }
+
+        .packages-table th:nth-child(5) {
+            width: 18%;
+        }
+
+
+    /* =========================================
+   Table Rows
+========================================= */
+
+    .packages-table tbody tr {
+        transition: background-color 0.2s ease;
+    }
+
+        .packages-table tbody tr:hover {
+            background-color: rgba(255, 255, 255, 0.12);
+        }
+
+
+    /* =========================================
+   Table Cells
+========================================= */
+
+    .packages-table td {
+        font-size: 19px;
+        padding: 19px 0;
+        vertical-align: middle;
+        line-height: 1.25;
+        border-bottom: 1px solid #777777;
+    }
+
+
+        /* =========================================
+   Package Name
+========================================= */
+
+        .packages-table td:first-child {
+            font-weight: 400;
+        }
+
+
+        /* =========================================
+   Price
+========================================= */
+
+        .packages-table td:nth-child(4) {
+            white-space: nowrap;
+        }
+
+
+        /* =========================================
+   Actions Cell
+========================================= */
+
+        .packages-table td:last-child {
+            padding-right: 5px;
+        }
+
+
+/* =========================================
+   Action Buttons Wrapper
+========================================= */
+
+.action-buttons {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    height: 100%;
+}
+
+
+/* =========================================
+   Action Button
+========================================= */
+
+.icon-button {
+    width: 32px;
+    height: 32px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0;
+    border: none;
+    background: transparent;
+    font-size: 23px;
+    cursor: pointer;
+    transition: transform 0.2s ease, opacity 0.2s ease;
+}
+
+
+/* =========================================
+   Edit Button
+========================================= */
+
+.edit-button {
+    color: #111111;
+}
+
+    .edit-button:hover {
+        transform: scale(1.12);
+        opacity: 0.7;
+    }
+
+
+/* =========================================
+   Delete Button
+========================================= */
+
+.delete-button {
+    color: #555555;
+}
+
+    .delete-button:hover {
+        transform: scale(1.12);
+        color: #d9534f;
+    }
+
+
+/* =========================================
+   Last Row
+========================================= */
+
+.packages-table tbody tr:last-child td {
+    border-bottom: none;
+}
+
+
+/* =========================================
+   Responsive
+========================================= */
+
+@media screen and (max-width: 1000px) {
+
+    .packages-page {
+        padding: 18px 25px 30px;
+    }
+
+    .packages-header h1 {
+        font-size: 28px;
+    }
+
+    .add-package-button {
+        font-size: 16px;
+        padding: 9px 18px;
+    }
+
+    .packages-table th {
+        font-size: 19px;
+    }
+
+    .packages-table td {
+        font-size: 17px;
+    }
+
+    .packages-container {
+        padding: 25px 15px 15px;
+    }
+}
+
+
+@media screen and (max-width: 700px) {
+
+    .packages-page {
+        padding: 15px;
+    }
+
+    .packages-header {
+        align-items: flex-start;
+        gap: 15px;
+    }
+
+        .packages-header h1 {
+            font-size: 24px;
+        }
+
+    .packages-container {
+        overflow-x: auto;
+    }
+
+    .packages-table {
+        min-width: 750px;
+    }
+}
