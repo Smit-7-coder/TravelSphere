@@ -1,236 +1,374 @@
 ﻿/* =========================================
-   Manage Packages Page
+   RESET
+========================================= */
+
+.packages-page,
+.packages-page * {
+    box-sizing: border-box;
+}
+
+
+/* =========================================
+   PAGE
 ========================================= */
 
 .packages-page {
     width: 100%;
-    padding: 18px 38px 40px;
-    box-sizing: border-box;
+    min-height: 100vh;
+
+    padding: 38px 42px 50px;
+
+    background: #eeeeee;
+
+    font-family: Arial, Helvetica, sans-serif;
 }
 
 
 /* =========================================
-   Page Header
+   HEADER
 ========================================= */
 
 .packages-header {
-    width: 100%;
     display: flex;
-    justify-content: space-between;
     align-items: center;
-    margin-bottom: 28px;
+    justify-content: space-between;
+
+    gap: 25px;
+
+    margin-bottom: 25px;
 }
 
-    .packages-header h1 {
-        margin: 0;
-        font-size: 32px;
-        font-weight: 500;
-        color: #111111;
-    }
+
+.page-heading h1 {
+    margin: 0 0 6px;
+
+    font-size: 32px;
+    font-weight: 500;
+
+    color: #111111;
+}
+
+
+.page-heading p {
+    margin: 0;
+
+    font-size: 14px;
+
+    color: #777777;
+}
 
 
 /* =========================================
-   Add Package Button
+   ADD PACKAGE BUTTON
 ========================================= */
 
 .add-package-button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    gap: 8px;
+
+    height: 42px;
+
+    padding: 0 18px;
+
     border: none;
-    background-color: #4f9f78;
+    border-radius: 9px;
+
+    background: #124d3c;
     color: #ffffff;
-    font-family: inherit;
-    font-size: 18px;
-    font-weight: 500;
-    padding: 10px 22px;
-    border-radius: 14px;
+
+    font-family: Arial, Helvetica, sans-serif;
+
+    font-size: 13px;
+    font-weight: 600;
+
     cursor: pointer;
-    transition: background-color 0.2s ease, transform 0.2s ease;
+
+    transition:
+        background-color 0.2s ease,
+        transform 0.2s ease,
+        box-shadow 0.2s ease;
 }
 
-    .add-package-button:hover {
-        background-color: #438d69;
-        transform: translateY(-1px);
-    }
+
+.add-package-button i {
+    font-size: 14px;
+}
+
+
+.add-package-button:hover {
+    background: #0d3d30;
+
+    transform: translateY(-1px);
+
+    box-shadow: 0 5px 12px rgba(18, 77, 60, 0.18);
+}
+
+
+.add-package-button:active {
+    transform: scale(0.98);
+}
 
 
 /* =========================================
-   Table Container
+   SUMMARY
+========================================= */
+
+.package-summary {
+    display: grid;
+
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+
+    gap: 18px;
+
+    margin-bottom: 24px;
+}
+
+
+.summary-card {
+    min-height: 82px;
+
+    display: flex;
+    align-items: center;
+
+    gap: 15px;
+
+    padding: 16px 20px;
+
+    background: #ffffff;
+
+    border: 1px solid #e1e1e1;
+
+    border-radius: 12px;
+}
+
+
+.summary-icon {
+    width: 44px;
+    height: 44px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 10px;
+
+    font-size: 18px;
+}
+
+
+.package-icon {
+    background: #e4f2ec;
+    color: #247453;
+}
+
+
+.location-icon {
+    background: #e8eef7;
+    color: #45658e;
+}
+
+
+.summary-label {
+    display: block;
+
+    margin-bottom: 5px;
+
+    font-size: 12px;
+
+    color: #777777;
+}
+
+
+.summary-card strong {
+    display: block;
+
+    font-size: 21px;
+    font-weight: 600;
+
+    color: #222222;
+}
+
+
+/* =========================================
+   TABLE CONTAINER
 ========================================= */
 
 .packages-container {
     width: 100%;
-    background-color: #d9d9d9;
-    border-radius: 20px;
-    padding: 30px 20px 20px;
-    box-sizing: border-box;
+
+    background: #ffffff;
+
+    border: 1px solid #e0e0e0;
+
+    border-radius: 15px;
+
+    overflow: hidden;
+}
+
+
+/* =========================================
+   CARD HEADER
+========================================= */
+
+.packages-card-header {
+    min-height: 86px;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    gap: 25px;
+
+    padding: 18px 24px;
+
+    border-bottom: 1px solid #e5e5e5;
+}
+
+
+.packages-card-header h2 {
+    margin: 0 0 5px;
+
+    font-size: 19px;
+    font-weight: 500;
+
+    color: #222222;
+}
+
+
+.packages-card-header p {
+    margin: 0;
+
+    font-size: 12px;
+
+    color: #888888;
+}
+
+
+/* =========================================
+   SEARCH
+========================================= */
+
+.package-search {
+    width: 260px;
+    height: 38px;
+
+    display: flex;
+    align-items: center;
+
+    gap: 9px;
+
+    padding: 0 12px;
+
+    background: #fafafa;
+
+    border: 1px solid #dddddd;
+
+    border-radius: 8px;
+}
+
+
+.package-search i {
+    font-size: 14px;
+
+    color: #888888;
+}
+
+
+.package-search input {
+    width: 100%;
+    height: 100%;
+
+    padding: 0;
+
+    border: none;
+    outline: none;
+
+    background: transparent;
+
+    font-family: Arial, Helvetica, sans-serif;
+
+    font-size: 13px;
+
+    color: #333333;
+}
+
+
+.package-search input::placeholder {
+    color: #999999;
+}
+
+
+/* =========================================
+   TABLE WRAPPER
+========================================= */
+
+.table-wrapper {
+    width: 100%;
+
     overflow-x: auto;
 }
 
 
 /* =========================================
-   Table
+   TABLE
 ========================================= */
 
 .packages-table {
     width: 100%;
+
+    min-width: 850px;
+
     border-collapse: collapse;
+
     table-layout: fixed;
-    color: #111111;
 }
 
 
-    /* =========================================
-   Table Header
-========================================= */
+.packages-table th {
+    height: 52px;
 
-    .packages-table th {
-        text-align: left;
-        font-size: 22px;
-        font-weight: 500;
-        padding: 14px 0 10px;
-        border-bottom: 1px solid #777777;
-    }
+    padding: 0 20px;
 
+    background: #fafafa;
 
-        /* =========================================
-   Column Widths
-========================================= */
+    border-bottom: 1px solid #e2e2e2;
 
-        .packages-table th:nth-child(1) {
-            width: 28%;
-        }
+    text-align: left;
 
-        .packages-table th:nth-child(2) {
-            width: 22%;
-        }
+    font-size: 12px;
+    font-weight: 600;
 
-        .packages-table th:nth-child(3) {
-            width: 16%;
-        }
-
-        .packages-table th:nth-child(4) {
-            width: 16%;
-        }
-
-        .packages-table th:nth-child(5) {
-            width: 18%;
-        }
-
-
-    /* =========================================
-   Table Rows
-========================================= */
-
-    .packages-table tbody tr {
-        transition: background-color 0.2s ease;
-    }
-
-        .packages-table tbody tr:hover {
-            background-color: rgba(255, 255, 255, 0.12);
-        }
-
-
-    /* =========================================
-   Table Cells
-========================================= */
-
-    .packages-table td {
-        font-size: 19px;
-        padding: 19px 0;
-        vertical-align: middle;
-        line-height: 1.25;
-        border-bottom: 1px solid #777777;
-    }
-
-
-        /* =========================================
-   Package Name
-========================================= */
-
-        .packages-table td:first-child {
-            font-weight: 400;
-        }
-
-
-        /* =========================================
-   Price
-========================================= */
-
-        .packages-table td:nth-child(4) {
-            white-space: nowrap;
-        }
-
-
-        /* =========================================
-   Actions Cell
-========================================= */
-
-        .packages-table td:last-child {
-            padding-right: 5px;
-        }
-
-
-/* =========================================
-   Action Buttons Wrapper
-========================================= */
-
-.action-buttons {
-    display: flex;
-    align-items: center;
-    gap: 20px;
-    height: 100%;
+    color: #666666;
 }
 
 
-/* =========================================
-   Action Button
-========================================= */
+.packages-table td {
+    height: 72px;
 
-.icon-button {
-    width: 32px;
-    height: 32px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: 0;
-    border: none;
-    background: transparent;
-    font-size: 23px;
-    cursor: pointer;
-    transition: transform 0.2s ease, opacity 0.2s ease;
+    padding: 0 20px;
+
+    border-bottom: 1px solid #eeeeee;
+
+    font-size: 13px;
+
+    color: #333333;
+
+    vertical-align: middle;
 }
 
 
-/* =========================================
-   Edit Button
-========================================= */
-
-.edit-button {
-    color: #111111;
+.packages-table tbody tr {
+    transition: background-color 0.2s ease;
 }
 
-    .edit-button:hover {
-        transform: scale(1.12);
-        opacity: 0.7;
-    }
 
-
-/* =========================================
-   Delete Button
-========================================= */
-
-.delete-button {
-    color: #555555;
+.packages-table tbody tr:hover {
+    background: #fafcfb;
 }
 
-    .delete-button:hover {
-        transform: scale(1.12);
-        color: #d9534f;
-    }
-
-
-/* =========================================
-   Last Row
-========================================= */
 
 .packages-table tbody tr:last-child td {
     border-bottom: none;
@@ -238,58 +376,590 @@
 
 
 /* =========================================
-   Responsive
+   COLUMN WIDTHS
 ========================================= */
 
-@media screen and (max-width: 1000px) {
-
-    .packages-page {
-        padding: 18px 25px 30px;
-    }
-
-    .packages-header h1 {
-        font-size: 28px;
-    }
-
-    .add-package-button {
-        font-size: 16px;
-        padding: 9px 18px;
-    }
-
-    .packages-table th {
-        font-size: 19px;
-    }
-
-    .packages-table td {
-        font-size: 17px;
-    }
-
-    .packages-container {
-        padding: 25px 15px 15px;
-    }
+.packages-table th:nth-child(1),
+.packages-table td:nth-child(1) {
+    width: 28%;
 }
 
 
-@media screen and (max-width: 700px) {
+.packages-table th:nth-child(2),
+.packages-table td:nth-child(2) {
+    width: 27%;
+}
+
+
+.packages-table th:nth-child(3),
+.packages-table td:nth-child(3) {
+    width: 13%;
+}
+
+
+.packages-table th:nth-child(4),
+.packages-table td:nth-child(4) {
+    width: 17%;
+}
+
+
+.packages-table th:nth-child(5),
+.packages-table td:nth-child(5) {
+    width: 15%;
+
+    text-align: center;
+}
+
+
+/* =========================================
+   PACKAGE NAME
+========================================= */
+
+.package-name {
+    display: flex;
+    align-items: center;
+
+    gap: 11px;
+}
+
+
+.package-avatar {
+    width: 36px;
+    height: 36px;
+
+    flex-shrink: 0;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 9px;
+
+    background: #e7f1ed;
+
+    color: #247453;
+
+    font-size: 14px;
+}
+
+
+.package-name span {
+    font-size: 13px;
+    font-weight: 500;
+
+    color: #222222;
+}
+
+
+/* =========================================
+   LOCATION
+========================================= */
+
+.location {
+    display: flex;
+    align-items: center;
+
+    gap: 7px;
+}
+
+
+.location i {
+    flex-shrink: 0;
+
+    color: #777777;
+
+    font-size: 13px;
+}
+
+
+.location span {
+    color: #555555;
+
+    line-height: 1.4;
+}
+
+
+/* =========================================
+   DURATION
+========================================= */
+
+.duration {
+    display: inline-flex;
+    align-items: center;
+
+    min-height: 27px;
+
+    padding: 0 10px;
+
+    border-radius: 15px;
+
+    background: #f1f1f1;
+
+    color: #555555;
+
+    font-size: 11px;
+}
+
+
+/* =========================================
+   PRICE
+========================================= */
+
+.price {
+    font-weight: 600;
+
+    color: #222222;
+}
+
+
+/* =========================================
+   ACTION BUTTONS
+========================================= */
+
+.action-buttons {
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    gap: 7px;
+}
+
+
+.icon-button {
+    width: 32px;
+    height: 32px;
+
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    padding: 0;
+
+    border: 1px solid transparent;
+
+    border-radius: 8px;
+
+    cursor: pointer;
+
+    font-size: 14px;
+
+    transition:
+        background-color 0.2s ease,
+        color 0.2s ease,
+        border-color 0.2s ease,
+        transform 0.2s ease;
+}
+
+
+.icon-button:hover {
+    transform: translateY(-1px);
+}
+
+
+.icon-button:active {
+    transform: scale(0.94);
+}
+
+
+/* EDIT */
+
+.edit-button {
+    background: #e7f0fa;
+
+    border-color: #d4e2f2;
+
+    color: #3e6791;
+}
+
+
+.edit-button:hover {
+    background: #3e6791;
+
+    border-color: #3e6791;
+
+    color: #ffffff;
+}
+
+
+/* DELETE */
+
+.delete-button {
+    background: #fde7e7;
+
+    border-color: #f4cccc;
+
+    color: #c62828;
+}
+
+
+.delete-button:hover {
+    background: #c62828;
+
+    border-color: #c62828;
+
+    color: #ffffff;
+}
+
+
+/* =========================================
+   MODAL OVERLAY
+========================================= */
+
+.package-modal-overlay {
+    position: fixed;
+
+    inset: 0;
+
+    z-index: 5000;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    padding: 20px;
+
+    background: rgba(0, 0, 0, 0.42);
+
+    opacity: 0;
+
+    visibility: hidden;
+
+    transition:
+        opacity 0.2s ease,
+        visibility 0.2s ease;
+}
+
+
+.package-modal-overlay.show {
+    opacity: 1;
+
+    visibility: visible;
+}
+
+
+/* =========================================
+   MODAL
+========================================= */
+
+.package-modal {
+    width: 100%;
+
+    max-width: 520px;
+
+    background: #ffffff;
+
+    border-radius: 14px;
+
+    box-shadow:
+        0 18px 50px rgba(0, 0, 0, 0.20);
+
+    overflow: hidden;
+
+    transform: translateY(10px);
+
+    transition: transform 0.2s ease;
+}
+
+
+.package-modal-overlay.show .package-modal {
+    transform: translateY(0);
+}
+
+
+/* =========================================
+   MODAL HEADER
+========================================= */
+
+.modal-header {
+    display: flex;
+
+    align-items: flex-start;
+    justify-content: space-between;
+
+    gap: 20px;
+
+    padding: 22px 24px;
+
+    border-bottom: 1px solid #eeeeee;
+}
+
+
+.modal-header h2 {
+    margin: 0 0 5px;
+
+    font-size: 20px;
+    font-weight: 500;
+
+    color: #222222;
+}
+
+
+.modal-header p {
+    margin: 0;
+
+    font-size: 12px;
+
+    color: #888888;
+}
+
+
+.modal-close {
+    width: 32px;
+    height: 32px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    padding: 0;
+
+    border: none;
+
+    border-radius: 7px;
+
+    background: #f2f2f2;
+
+    color: #666666;
+
+    cursor: pointer;
+
+    transition: all 0.2s ease;
+}
+
+
+.modal-close:hover {
+    background: #e5e5e5;
+
+    color: #222222;
+}
+
+
+/* =========================================
+   MODAL BODY
+========================================= */
+
+.modal-body {
+    padding: 24px;
+}
+
+
+.form-row {
+    display: grid;
+
+    grid-template-columns: 1fr 1fr;
+
+    gap: 15px;
+}
+
+
+.form-group {
+    margin-bottom: 18px;
+}
+
+
+.form-group:last-child {
+    margin-bottom: 0;
+}
+
+
+.form-group label {
+    display: block;
+
+    margin-bottom: 7px;
+
+    font-size: 12px;
+
+    font-weight: 600;
+
+    color: #555555;
+}
+
+
+.form-group input {
+    width: 100%;
+
+    height: 42px;
+
+    padding: 0 12px;
+
+    border: 1px solid #dddddd;
+
+    border-radius: 8px;
+
+    outline: none;
+
+    background: #ffffff;
+
+    font-family: Arial, Helvetica, sans-serif;
+
+    font-size: 13px;
+
+    color: #222222;
+
+    transition:
+        border-color 0.2s ease,
+        box-shadow 0.2s ease;
+}
+
+
+.form-group input:focus {
+    border-color: #124d3c;
+
+    box-shadow:
+        0 0 0 3px rgba(18, 77, 60, 0.08);
+}
+
+
+.form-group input::placeholder {
+    color: #aaaaaa;
+}
+
+
+/* =========================================
+   MODAL FOOTER
+========================================= */
+
+.modal-footer {
+    display: flex;
+
+    align-items: center;
+    justify-content: flex-end;
+
+    gap: 10px;
+
+    padding: 17px 24px;
+
+    background: #fafafa;
+
+    border-top: 1px solid #eeeeee;
+}
+
+
+.modal-cancel,
+.modal-save {
+    height: 38px;
+
+    padding: 0 15px;
+
+    border-radius: 7px;
+
+    font-family: Arial, Helvetica, sans-serif;
+
+    font-size: 12px;
+    font-weight: 600;
+
+    cursor: pointer;
+
+    transition: all 0.2s ease;
+}
+
+
+.modal-cancel {
+    border: 1px solid #dddddd;
+
+    background: #ffffff;
+
+    color: #555555;
+}
+
+
+.modal-cancel:hover {
+    background: #f1f1f1;
+}
+
+
+.modal-save {
+    display: inline-flex;
+
+    align-items: center;
+    justify-content: center;
+
+    gap: 7px;
+
+    border: none;
+
+    background: #124d3c;
+
+    color: #ffffff;
+}
+
+
+.modal-save:hover {
+    background: #0d3d30;
+}
+
+
+.modal-save:active,
+.modal-cancel:active {
+    transform: scale(0.98);
+}
+
+
+/* =========================================
+   RESPONSIVE
+========================================= */
+
+@media (max-width: 1000px) {
 
     .packages-page {
-        padding: 15px;
+        padding: 30px 25px 40px;
     }
 
-    .packages-header {
-        align-items: flex-start;
-        gap: 15px;
-    }
-
-        .packages-header h1 {
-            font-size: 24px;
-        }
-
-    .packages-container {
-        overflow-x: auto;
-    }
 
     .packages-table {
-        min-width: 750px;
+        min-width: 850px;
     }
+
+}
+
+
+@media (max-width: 700px) {
+
+    .packages-page {
+        padding: 25px 15px 35px;
+    }
+
+
+    .packages-header {
+        flex-direction: column;
+
+        align-items: flex-start;
+    }
+
+
+    .add-package-button {
+        width: 100%;
+    }
+
+
+    .package-summary {
+        grid-template-columns: 1fr;
+    }
+
+
+    .packages-card-header {
+        flex-direction: column;
+
+        align-items: flex-start;
+    }
+
+
+    .package-search {
+        width: 100%;
+    }
+
+
+    .form-row {
+        grid-template-columns: 1fr;
+
+        gap: 0;
+    }
+
+
+    .package-modal {
+        max-width: 100%;
+    }
+
 }

@@ -29,7 +29,10 @@
                 ID="btnAddPackage"
                 runat="server"
                 Text="+ Add New Package"
-                CssClass="add-package-button" />
+                PostBackUrl="~/Admin/AddNewPackages.aspx"
+                CssClass="add-package-button" 
+                />
+                
 
         </div>
 
