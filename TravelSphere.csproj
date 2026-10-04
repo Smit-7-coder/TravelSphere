@@ -135,9 +135,21 @@
     <Content Include="Account\Login.aspx" />
     <Content Include="Account\Register.aspx" />
     <Content Include="Account\ResetPassword.aspx" />
+    <Content Include="Admin\About.aspx" />
+    <Content Include="Admin\AddNewPackages.aspx" />
     <Content Include="Admin\AdminDeshboard.aspx" />
+    <Content Include="Admin\AdminProfile.aspx" />
+    <Content Include="Admin\AEditProfile.aspx" />
+    <Content Include="Admin\EPackages.aspx" />
+    <Content Include="Admin\ManageBookings.aspx" />
     <Content Include="Admin\ManagePackages.aspx" />
+    <Content Include="Assets\Admincss\about.css" />
+    <Content Include="Assets\Admincss\AddNewPackage.css" />
+    <Content Include="Assets\Admincss\AEditProfile.css" />
+    <Content Include="Assets\Admincss\AProfile.css" />
     <Content Include="Assets\Admincss\deshboard.css" />
+    <Content Include="Assets\Admincss\EPackage.css" />
+    <Content Include="Assets\Admincss\mbooking.css" />
     <Content Include="Assets\Admincss\mpackage.css" />
     <Content Include="Assets\css\about-us.css" />
     <Content Include="Assets\css\booking-details.css" />
@@ -153,6 +165,7 @@
     <Content Include="Assets\css\profile.css" />
     <Content Include="Assets\css\Register.css" />
     <Content Include="Assets\css\search.css" />
+    <Content Include="Assets\css\staticLogin.css" />
     <Content Include="Assets\css\traveller-master.css" />
     <Content Include="Contact.aspx" />
     <Content Include="Content\bootstrap-grid.css" />
@@ -278,6 +291,20 @@
       <DependentUpon>ResetPassword.aspx</DependentUpon>
     </Compile>
     <Compile Include="AdminAccount.cs" />
+    <Compile Include="Admin\About.aspx.cs">
+      <DependentUpon>About.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Admin\About.aspx.designer.cs">
+      <DependentUpon>About.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Admin\AddNewPackages.aspx.cs">
+      <DependentUpon>AddNewPackages.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Admin\AddNewPackages.aspx.designer.cs">
+      <DependentUpon>AddNewPackages.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Admin\Admin.Master.cs">
       <DependentUpon>Admin.Master</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -291,6 +318,34 @@
     </Compile>
     <Compile Include="Admin\AdminDeshboard.aspx.designer.cs">
       <DependentUpon>AdminDeshboard.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Admin\AdminProfile.aspx.cs">
+      <DependentUpon>AdminProfile.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Admin\AdminProfile.aspx.designer.cs">
+      <DependentUpon>AdminProfile.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Admin\AEditProfile.aspx.cs">
+      <DependentUpon>AEditProfile.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Admin\AEditProfile.aspx.designer.cs">
+      <DependentUpon>AEditProfile.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Admin\EPackages.aspx.cs">
+      <DependentUpon>EPackages.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Admin\EPackages.aspx.designer.cs">
+      <DependentUpon>EPackages.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Admin\ManageBookings.aspx.cs">
+      <DependentUpon>ManageBookings.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Admin\ManageBookings.aspx.designer.cs">
+      <DependentUpon>ManageBookings.aspx</DependentUpon>
     </Compile>
     <Compile Include="Admin\ManagePackages.aspx.cs">
       <DependentUpon>ManagePackages.aspx</DependentUpon>

@@ -22,8 +22,7 @@ namespace TravelSphere.Account
                 lblMessage.Text =
                     Session["ForgotPasswordMessage"].ToString();
 
-                lblMessage.CssClass =
-                    "message success";
+                lblMessage.CssClass = "message success";
 
                 Session.Remove("ForgotPasswordMessage");
             }
@@ -99,15 +98,19 @@ namespace TravelSphere.Account
         private void LoginUser(SqlDataReader reader)
         {
             string role =
-                reader["Role"].ToString();
+                reader["Role"].ToString().Trim();
 
             UserAccount user;
 
-            if (role == "Admin")
+            if (role.Equals(
+                "Admin",
+                StringComparison.OrdinalIgnoreCase))
             {
                 user = new AdminAccount();
             }
-            else if (role == "Traveller")
+            else if (role.Equals(
+                "Traveller",
+                StringComparison.OrdinalIgnoreCase))
             {
                 user = new TravellerAccount();
             }
@@ -130,11 +133,13 @@ namespace TravelSphere.Account
 
             user.Role = role;
 
+            // Store logged-in user information
             Session["UserId"] = user.UserId;
             Session["FullName"] = user.FullName;
             Session["Email"] = user.Email;
             Session["Role"] = user.Role;
 
+            // Redirect according to account type
             Response.Redirect(
                 user.GetHomePage());
         }
