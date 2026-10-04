@@ -1,32 +1,47 @@
-﻿/* =========================================================
-   TRAVELSPHERE - ADMIN DASHBOARD
-   ========================================================= */
+﻿/* =====================================================
+   GLOBAL BOX SIZING
+===================================================== */
+
+.dashboard-page,
+.dashboard-page *,
+.dashboard-page *::before,
+.dashboard-page *::after {
+    box-sizing: border-box;
+}
 
 
-/* ================= GENERAL ================= */
+/* =====================================================
+   PAGE WRAPPER
+===================================================== */
 
 .dashboard-page {
     width: 100%;
     min-height: 100vh;
     background-color: #eeeeee;
+    font-family: Arial, Helvetica, sans-serif;
+    color: #171717;
 }
 
 
-/* ================= HERO SECTION ================= */
+/* =====================================================
+   HERO BANNER
+===================================================== */
 
 .dashboard-hero {
     position: relative;
     width: 100%;
-    height: 400px;
-    background-image: url("../images/deshboardimage.jpg");
+    height: 365px;
+    background-color: #2b3a4a;
+    background-image: url("../Images/deshboardimage.jpg");
     background-size: cover;
     background-position: center;
-    padding: 80px 55px 0;
     overflow: hidden;
 }
 
 
-    /* Slight overlay to make text visible */
+    /* =====================================================
+   HERO OVERLAY
+===================================================== */
 
     .dashboard-hero::before {
         content: "";
@@ -35,254 +50,353 @@
         left: 0;
         width: 100%;
         height: 100%;
-        background-color: rgba(255, 255, 255, 0.12);
+        background: rgba(255, 255, 255, 0.20);
+        z-index: 1;
     }
 
 
-/* ================= HERO TEXT ================= */
+/* =====================================================
+   HERO CONTENT
+===================================================== */
 
 .hero-content {
-    position: relative;
-    z-index: 1;
-}
-
-    .hero-content h1 {
-        margin: 0 0 5px 0;
-        font-size: 26px;
-        font-weight: 700;
-        color: #151515;
-    }
-
-    .hero-content p {
-        margin: 0;
-        font-size: 13px;
-        color: #333333;
-    }
-
-
-/* ================= ADMIN AVATAR ================= */
-
-.admin-avatar {
     position: absolute;
-    top: 12px;
-    right: 18px;
-    width: 50px;
-    height: 50px;
-    border-radius: 50%;
-    object-fit: cover;
+    left: 80px;
+    top: 105px;
     z-index: 2;
 }
 
 
-/* ================= DASHBOARD CONTENT ================= */
+    .hero-content h1 {
+        margin: 0;
+        font-size: 36px;
+        line-height: 1.2;
+        font-weight: 700;
+        color: #17202b;
+    }
 
-.dashboard-content {
-    width: 100%;
-    padding: 0 28px 35px;
-    margin-top: -20px;
-    position: relative;
+
+    .hero-content p {
+        margin: 10px 0 0;
+        font-size: 16px;
+        color: #303b45;
+    }
+
+
+/* =====================================================
+   ADMIN AVATAR
+===================================================== */
+
+.admin-avatar {
+    position: absolute;
+    top: 20px;
+    right: 35px;
     z-index: 3;
+    width: 58px;
+    height: 58px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 3px solid rgba(255, 255, 255, 0.85);
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
 }
 
 
-/* ================= SUMMARY CARDS ================= */
+/* =====================================================
+   CONTENT SECTION
+===================================================== */
+
+.dashboard-content {
+    position: relative;
+    width: 100%;
+    padding: 0 40px 45px;
+    z-index: 5;
+}
+
+
+/* =====================================================
+   SUMMARY CARDS
+===================================================== */
 
 .summary-cards {
     width: 100%;
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    gap: 38px;
-    padding: 0 18px;
-    margin-bottom: 12px;
+    gap: 30px;
+    margin-top: -30px;
+    margin-bottom: 30px;
+    position: relative;
+    z-index: 10;
 }
 
+
 .summary-card {
-    min-height: 68px;
+    min-height: 95px;
     background-color: #ffffff;
-    border-radius: 10px;
+    border-radius: 12px;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
 }
+
 
     .summary-card h3 {
-        margin: 0 0 5px 0;
-        font-size: 18px;
-        font-weight: 400;
-        color: #202020;
+        margin: 0 0 6px;
+        font-size: 20px;
+        font-weight: 500;
+        color: #222222;
     }
+
 
     .summary-card span {
-        font-size: 17px;
-        color: #202020;
+        font-size: 26px;
+        font-weight: 700;
+        color: #111111;
     }
 
-/* ================= LOWER SECTION ================= */
+
+/* =====================================================
+   LOWER SECTION
+===================================================== */
 
 .dashboard-lower-section {
+    width: 100%;
     display: grid;
-    grid-template-columns: minmax(0, 1fr) 230px;
-    gap: 26px;
-    align-items: center;
+    grid-template-columns: minmax(0, 1fr) 260px;
+    gap: 30px;
+    align-items: start;
 }
 
 
-/* ================= RECENT BOOKINGS ================= */
+/* =====================================================
+   RECENT BOOKINGS
+===================================================== */
 
-.recent-bookings-section h2 {
-    margin: 0 0 18px 0;
-    font-size: 25px;
-    font-weight: 500;
-    color: #111111;
+.recent-bookings-section {
+    width: 100%;
 }
 
 
-/* ================= TABLE CARD ================= */
+    .recent-bookings-section h2 {
+        margin: 0 0 18px;
+        font-size: 28px;
+        font-weight: 600;
+        color: #111111;
+    }
+
+
+/* =====================================================
+   TABLE CONTAINER
+===================================================== */
 
 .booking-table-container {
     width: 100%;
-    background-color: #d9d9d9;
-    border-radius: 15px;
-    padding: 17px 15px;
+    background-color: #e5e5e5;
+    border-radius: 16px;
+    padding: 20px 24px;
     overflow-x: auto;
 }
 
 
-/* ================= TABLE ================= */
+/* =====================================================
+   TABLE
+===================================================== */
 
 .booking-table {
     width: 100%;
     border-collapse: collapse;
-    table-layout: fixed;
 }
 
 
-    /* ================= TABLE HEADER ================= */
-
     .booking-table th {
-        padding: 8px 3px 13px;
-        font-size: 17px;
-        font-weight: 500;
+        padding: 12px 10px 14px;
         text-align: left;
-        color: #151515;
+        font-size: 16px;
+        font-weight: 600;
+        color: #111111;
+        border-bottom: 1.5px solid #777777;
+        white-space: nowrap;
     }
 
-
-    /* ================= TABLE BODY ================= */
 
     .booking-table td {
-        padding: 10px 3px;
-        border-top: 1px solid #666666;
-        font-size: 14px;
-        line-height: 1.2;
+        padding: 14px 10px;
+        font-size: 15px;
+        line-height: 1.4;
+        color: #1a1a1a;
+        border-bottom: 1px solid #777777;
         vertical-align: middle;
-        color: #171717;
     }
 
 
-        /* ================= COLUMN WIDTHS ================= */
-
-        .booking-table th:nth-child(1),
-        .booking-table td:nth-child(1) {
-            width: 24%;
-        }
+    .booking-table tbody tr:last-child td {
+        border-bottom: none;
+    }
 
 
-        .booking-table th:nth-child(2),
-        .booking-table td:nth-child(2) {
-            width: 31%;
-        }
+    /* PERSONS */
+
+    .booking-table th:nth-child(3),
+    .booking-table td:nth-child(3) {
+        text-align: center;
+    }
 
 
-        .booking-table th:nth-child(3),
-        .booking-table td:nth-child(3) {
-            width: 15%;
-            text-align: center;
-        }
+    /* PAYMENT */
+
+    .booking-table th:nth-child(4),
+    .booking-table td:nth-child(4) {
+        text-align: right;
+    }
 
 
-        .booking-table th:nth-child(4),
-        .booking-table td:nth-child(4) {
-            width: 30%;
-            text-align: center;
-        }
-
-
-/* ================= ACTION BUTTONS ================= */
+/* =====================================================
+   ACTION BUTTONS
+===================================================== */
 
 .dashboard-actions {
+    width: 100%;
     display: flex;
     flex-direction: column;
-    gap: 47px;
-    padding-top: 55px;
+    gap: 25px;
+    padding-top: 50px;
 }
 
 
 .dashboard-action-button {
     width: 100%;
-    min-height: 38px;
+    min-height: 52px;
+    padding: 12px 18px;
     border: none;
-    border-radius: 7px;
+    border-radius: 8px;
     background-color: #2f9469;
-    color: white;
-    font-size: 18px;
+    color: #ffffff;
+    font-family: inherit;
+    font-size: 17px;
+    font-weight: 600;
     cursor: pointer;
+    text-align: center;
+    transition: background-color 0.2s ease, transform 0.15s ease;
 }
 
 
     .dashboard-action-button:hover {
-        background-color: #247d58;
+        background-color: #257854;
+        transform: translateY(-2px);
     }
 
 
-/* ================= RESPONSIVE ================= */
+    .dashboard-action-button:active {
+        transform: translateY(0);
+    }
 
-@media screen and (max-width: 900px) {
+
+/* =====================================================
+   TABLET
+===================================================== */
+
+@media screen and (max-width: 1000px) {
+
+    .dashboard-hero {
+        height: 320px;
+    }
+
+
+    .hero-content {
+        left: 40px;
+        top: 90px;
+    }
+
+
+        .hero-content h1 {
+            font-size: 30px;
+        }
+
+
+    .dashboard-content {
+        padding: 0 25px 35px;
+    }
+
 
     .summary-cards {
-        gap: 15px;
+        gap: 20px;
     }
+
 
     .dashboard-lower-section {
         grid-template-columns: 1fr;
     }
 
+
     .dashboard-actions {
-        padding-top: 5px;
         flex-direction: row;
         gap: 15px;
+        padding-top: 10px;
     }
 }
 
 
+/* =====================================================
+   MOBILE
+===================================================== */
+
 @media screen and (max-width: 650px) {
 
     .dashboard-hero {
-        padding: 75px 25px 0;
+        height: 270px;
     }
 
 
-    .hero-content h1 {
-        font-size: 21px;
+    .hero-content {
+        left: 20px;
+        top: 75px;
+    }
+
+
+        .hero-content h1 {
+            font-size: 24px;
+        }
+
+
+        .hero-content p {
+            font-size: 14px;
+        }
+
+
+    .admin-avatar {
+        width: 48px;
+        height: 48px;
+        top: 15px;
+        right: 15px;
+    }
+
+
+    .dashboard-content {
+        padding: 0 16px 30px;
     }
 
 
     .summary-cards {
         grid-template-columns: 1fr;
-        padding: 0;
         gap: 12px;
+        margin-top: -20px;
+    }
+
+
+    .summary-card {
+        min-height: 80px;
     }
 
 
     .booking-table {
-        min-width: 600px;
+        min-width: 540px;
     }
 
 
     .dashboard-actions {
         flex-direction: column;
-        gap: 15px;
+        gap: 12px;
+        padding-top: 15px;
     }
 }
