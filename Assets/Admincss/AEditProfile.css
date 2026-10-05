@@ -1,0 +1,450 @@
+﻿/* =========================================================
+   TRAVELSPHERE
+   EDIT ADMIN PROFILE
+   ========================================================= */
+
+
+/* =========================================================
+   PAGE
+   ========================================================= */
+
+.edit-profile-page {
+    width: 100%;
+    min-height: 100vh;
+    background: #eeeeee;
+    color: #202124;
+    box-sizing: border-box;
+    padding-bottom: 45px;
+}
+
+
+/* =========================================================
+   PAGE HEADER
+   ========================================================= */
+
+.edit-profile-header {
+    width: 100%;
+    min-height: 220px;
+    background-image: linear-gradient( rgba(255, 255, 255, 0.42), rgba(255, 255, 255, 0.42) ), url("../Images/travel-banner.jpg");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    display: flex;
+    align-items: center;
+    box-sizing: border-box;
+    padding: 40px 70px;
+}
+
+
+/* =========================================================
+   HEADER CONTENT
+   ========================================================= */
+
+.header-content h1 {
+    margin: 0;
+    font-size: 38px;
+    font-weight: 700;
+    line-height: 1.2;
+    color: #172033;
+}
+
+
+.header-content p {
+    margin: 10px 0 0;
+    font-size: 17px;
+    color: #202124;
+}
+
+
+/* =========================================================
+   MAIN CONTAINER
+   ========================================================= */
+
+.edit-profile-container {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    padding: 35px 55px;
+    box-sizing: border-box;
+}
+
+
+/* =========================================================
+   PROFILE FORM CARD
+   ========================================================= */
+
+.profile-form-card {
+    width: 100%;
+    max-width: 900px;
+    background: #ffffff;
+    border-radius: 22px;
+    padding: 32px 38px;
+    box-sizing: border-box;
+    box-shadow: 0 5px 18px rgba(0, 0, 0, 0.08);
+}
+
+
+/* =========================================================
+   PROFILE IMAGE SECTION
+   ========================================================= */
+
+.profile-image-section {
+    display: flex;
+    align-items: center;
+    margin-bottom: 30px;
+}
+
+
+/* =========================================================
+   PROFILE IMAGE WRAPPER
+   ========================================================= */
+
+.profile-image-wrapper {
+    flex-shrink: 0;
+}
+
+
+/* =========================================================
+   PROFILE IMAGE
+   ========================================================= */
+
+.profile-image {
+    width: 110px;
+    height: 110px;
+    border-radius: 50%;
+    overflow: hidden;
+    border: 5px solid #ffffff;
+    background: #eeeeee;
+    box-shadow: 0 3px 12px rgba(0, 0, 0, 0.15);
+    box-sizing: border-box;
+}
+
+
+    .profile-image img {
+        width: 100%;
+        height: 100%;
+        display: block;
+        object-fit: cover;
+    }
+
+
+/* =========================================================
+   PROFILE INFORMATION
+   ========================================================= */
+
+.profile-image-info {
+    margin-left: 22px;
+}
+
+
+    .profile-image-info h2 {
+        margin: 0 0 5px;
+        font-size: 26px;
+        font-weight: 700;
+        color: #202124;
+    }
+
+
+    .profile-image-info p {
+        margin: 0 0 12px;
+        font-size: 15px;
+        color: #666666;
+    }
+
+
+/* =========================================================
+   CHANGE PHOTO BUTTON
+   ========================================================= */
+
+.change-photo-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 7px;
+    height: 36px;
+    padding: 0 15px;
+    background: #e8f3ee;
+    color: #2f9469;
+    border-radius: 18px;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background 0.2s ease, color 0.2s ease, transform 0.2s ease;
+}
+
+
+    .change-photo-btn:hover {
+        background: #2f9469;
+        color: #ffffff;
+        transform: translateY(-1px);
+    }
+
+
+    .change-photo-btn i {
+        font-size: 15px;
+    }
+
+
+/* =========================================================
+   FORM SECTION
+   ========================================================= */
+
+.form-section {
+    margin-top: 25px;
+}
+
+
+    .form-section h2 {
+        margin: 0;
+        font-size: 23px;
+        font-weight: 700;
+        color: #202124;
+    }
+
+
+/* =========================================================
+   SECTION LINE
+   ========================================================= */
+
+.section-line {
+    width: 100%;
+    height: 1px;
+    background: #d6d6d6;
+    margin: 10px 0 22px;
+}
+
+
+/* =========================================================
+   FORM ROW
+   ========================================================= */
+
+.form-row {
+    display: flex;
+    gap: 25px;
+    width: 100%;
+}
+
+
+/* =========================================================
+   FORM GROUP
+   ========================================================= */
+
+.form-group {
+    flex: 1;
+    margin-bottom: 20px;
+}
+
+
+    .form-group.full-width {
+        width: 100%;
+    }
+
+
+    /* =========================================================
+   LABEL
+   ========================================================= */
+
+    .form-group label {
+        display: block;
+        margin-bottom: 7px;
+        font-size: 15px;
+        font-weight: 600;
+        color: #303030;
+    }
+
+
+/* =========================================================
+   INPUT
+   ========================================================= */
+
+.form-input {
+    width: 100%;
+    height: 46px;
+    padding: 0 14px;
+    border: 1px solid #cfcfcf;
+    border-radius: 10px;
+    background: #ffffff;
+    color: #202124;
+    font-family: inherit;
+    font-size: 15px;
+    outline: none;
+    box-sizing: border-box;
+    transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+
+    /* =========================================================
+   INPUT FOCUS
+   ========================================================= */
+
+    .form-input:focus {
+        border-color: #2f9469;
+        box-shadow: 0 0 0 3px rgba(47, 148, 105, 0.12);
+    }
+
+
+    /* =========================================================
+   READONLY INPUT
+   ========================================================= */
+
+    .form-input[readonly] {
+        background: #f1f1f1;
+        color: #666666;
+        cursor: not-allowed;
+    }
+
+
+/* =========================================================
+   ACTION AREA
+   ========================================================= */
+
+.form-actions {
+    width: 100%;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    gap: 12px;
+    margin-top: 20px;
+    padding-top: 25px;
+    border-top: 1px solid #dddddd;
+}
+
+
+/* =========================================================
+   COMMON BUTTON
+   ========================================================= */
+
+.cancel-btn,
+.save-btn {
+    height: 44px;
+    padding: 0 24px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 22px;
+    font-size: 15px;
+    font-weight: 600;
+    text-decoration: none;
+    box-sizing: border-box;
+    transition: background 0.2s ease, color 0.2s ease, transform 0.2s ease;
+}
+
+
+/* =========================================================
+   CANCEL BUTTON
+   ========================================================= */
+
+.cancel-btn {
+    background: #e5e5e5;
+    color: #303030;
+}
+
+
+    .cancel-btn:hover {
+        background: #d5d5d5;
+        color: #202124;
+        text-decoration: none;
+        transform: translateY(-1px);
+    }
+
+
+/* =========================================================
+   SAVE BUTTON
+   ========================================================= */
+
+.save-btn {
+    gap: 8px;
+    background: #2f9469;
+    color: #ffffff;
+}
+
+
+    .save-btn:hover {
+        background: #267d59;
+        color: #ffffff;
+        text-decoration: none;
+        transform: translateY(-1px);
+    }
+
+
+    .save-btn i {
+        font-size: 17px;
+    }
+
+
+/* =========================================================
+   RESPONSIVE - TABLET
+   ========================================================= */
+
+@media (max-width: 800px) {
+
+    .edit-profile-header {
+        padding: 35px 40px;
+    }
+
+
+    .edit-profile-container {
+        padding: 30px;
+    }
+
+
+    .form-row {
+        flex-direction: column;
+        gap: 0;
+    }
+
+
+    .profile-form-card {
+        padding: 28px;
+    }
+}
+
+
+/* =========================================================
+   RESPONSIVE - MOBILE
+   ========================================================= */
+
+@media (max-width: 550px) {
+
+    .edit-profile-header {
+        padding: 30px;
+    }
+
+
+    .header-content h1 {
+        font-size: 30px;
+    }
+
+
+    .edit-profile-container {
+        padding: 20px;
+    }
+
+
+    .profile-form-card {
+        padding: 22px;
+        border-radius: 16px;
+    }
+
+
+    .profile-image {
+        width: 85px;
+        height: 85px;
+    }
+
+
+    .profile-image-info h2 {
+        font-size: 22px;
+    }
+
+
+    .form-actions {
+        flex-direction: column-reverse;
+    }
+
+
+    .cancel-btn,
+    .save-btn {
+        width: 100%;
+    }
+}
