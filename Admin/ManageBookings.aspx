@@ -243,18 +243,6 @@
 
                                     <button
                                         type="button"
-                                        class="action-btn confirm-btn"
-                                        onclick="confirmBooking(this)"
-                                        title="Confirm Booking"
-                                        aria-label="Confirm Booking">
-
-                                        <i class="bi bi-check-lg"></i>
-
-                                    </button>
-
-
-                                    <button
-                                        type="button"
                                         class="action-btn cancel-btn"
                                         onclick="cancelBooking(this)"
                                         title="Cancel Booking"
@@ -341,18 +329,6 @@
                             <td>
 
                                 <div class="action-buttons">
-
-                                    <button
-                                        type="button"
-                                        class="action-btn confirm-btn"
-                                        onclick="confirmBooking(this)"
-                                        title="Confirm Booking"
-                                        aria-label="Confirm Booking">
-
-                                        <i class="bi bi-check-lg"></i>
-
-                                    </button>
-
 
                                     <button
                                         type="button"
@@ -445,18 +421,6 @@
 
                                     <button
                                         type="button"
-                                        class="action-btn confirm-btn"
-                                        onclick="confirmBooking(this)"
-                                        title="Confirm Booking"
-                                        aria-label="Confirm Booking">
-
-                                        <i class="bi bi-check-lg"></i>
-
-                                    </button>
-
-
-                                    <button
-                                        type="button"
                                         class="action-btn cancel-btn"
                                         onclick="cancelBooking(this)"
                                         title="Cancel Booking"
@@ -546,18 +510,6 @@
 
                                     <button
                                         type="button"
-                                        class="action-btn confirm-btn"
-                                        onclick="confirmBooking(this)"
-                                        title="Confirm Booking"
-                                        aria-label="Confirm Booking">
-
-                                        <i class="bi bi-check-lg"></i>
-
-                                    </button>
-
-
-                                    <button
-                                        type="button"
                                         class="action-btn cancel-btn"
                                         onclick="cancelBooking(this)"
                                         title="Cancel Booking"
@@ -644,17 +596,6 @@
                             <td>
 
                                 <div class="action-buttons">
-
-                                    <button
-                                        type="button"
-                                        class="action-btn confirm-btn"
-                                        onclick="confirmBooking(this)"
-                                        title="Confirm Booking"
-                                        aria-label="Confirm Booking">
-
-                                        <i class="bi bi-check-lg"></i>
-
-                                    </button>
 
 
                                     <button
